@@ -1,0 +1,5 @@
+httpx
+aiogram
+pydantic_settings
+httpx_socks
+python-dateutil
