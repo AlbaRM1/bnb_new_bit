@@ -3,3 +3,6 @@ aiogram
 pydantic_settings
 httpx_socks
 python-dateutil
+CurrencyConverter
+sqlalchemy
+aiosqlite
