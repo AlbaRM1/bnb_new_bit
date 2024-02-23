@@ -45,6 +45,7 @@ async def add_user_tg(callback_query: types.CallbackQuery):
     await add_user(tg_id, tg_tag)
     await del_user_request(tg_id)
     await callback_query.message.edit_text(f'@{tg_tag} Добавлен!')
+    await bot.send_message(tg_id, 'Заявка принята, используй бота :)')
 
 
 @router.callback_query(F.data == 'change_role')
