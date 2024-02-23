@@ -94,28 +94,38 @@ async def get_text_message(message: types.Message, state: FSMContext):
     domain_id = state_data['domain_id']
     
     await message.answer('✅ Получаем брони ✅')
-    reservations = await account_model.get_reservations()
+    try:
+        reservations = await account_model.get_reservations()
     
+    except:
+        await message.answer('Не удалось получить брони (скорее всего валюты нет в списке, напиши админам), скинь другие куки')
+        await state.set_state(Data.cookie_filepath)
+        return 0
     await message.answer(f'Спарсили {len(reservations)} броней')
     await message.answer('✅ Создаём ссылки! ✅')
-    for reservation in reservations:
-        reserv_code = reservation['reserv_code']
-        hotel_name = reservation['hotel_name']
-        full_name = reservation['full_name']
-        thread_token = reservation['thread_token']
-        
-        url = create_links.create_link(chat_id=message.from_user.id,
-                                       price=reservation['total'],
-                                       image_url=reservation['hotel_image'],
-                                       room_name=hotel_name,
-                                       address=reservation['address'],
-                                       date_start=reservation['start_date'],
-                                       date_end=reservation['end_date'],
-                                       domain_id=domain_id
-                                       )
-        
-        ready_data.append({'reserv_code': reserv_code, 'hotel_name': hotel_name, 'full_name': full_name, 'url': url, 'thread_token': thread_token})
-    await message.answer('✅ Ссылки созданы! Напиши любое сообщение, чтобы продолжить ✅')
+    try:
+        for reservation in reservations:
+            reserv_code = reservation['reserv_code']
+            hotel_name = reservation['hotel_name']
+            full_name = reservation['full_name']
+            thread_token = reservation['thread_token']
+            
+            url = create_links.create_link(chat_id=message.from_user.id,
+                                        price=reservation['total'],
+                                        image_url=reservation['hotel_image'],
+                                        room_name=hotel_name,
+                                        address=reservation['address'],
+                                        date_start=reservation['start_date'],
+                                        date_end=reservation['end_date'],
+                                        domain_id=domain_id
+                                        )
+            
+            ready_data.append({'reserv_code': reserv_code, 'hotel_name': hotel_name, 'full_name': full_name, 'url': url, 'thread_token': thread_token})
+        await message.answer('✅ Ссылки созданы! Напиши любое сообщение, чтобы продолжить ✅')
+    except:
+        await message.answer('Не удалось создать ссылки (возможно указан не верный domain id), скинь другие куки')
+        await state.set_state(Data.cookie_filepath)
+        return 0
 
     await state.update_data(reservations=ready_data)
     await state.set_state(Data.ready)

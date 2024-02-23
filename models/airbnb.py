@@ -1,10 +1,10 @@
+import re
 import datetime
 from dateutil.relativedelta import relativedelta
 from uuid import uuid4
 import json
 
 import httpx
-from bs4 import BeautifulSoup as bs
 from httpx_socks import AsyncProxyTransport
 from currency_converter import CurrencyConverter
 
@@ -59,8 +59,16 @@ currency_symbols = {
     '₣': 'FRF',
     '₴': 'UAH',
     '₩': 'KPW',
-    '₫': 'VND'
+    '₫': 'VND',
+    'R$': 'BRL',
+    'RM': 'MYR',
+    'S/': 'PEN',
+    '₩': 'KRW',
+    '₨': 'LKR',
+    'Rs': 'LKR',
+    'kr':'SEK'
 }
+
 
 class AirbnbAccount:
     def __init__(self, cookie_file, proxy):
@@ -94,18 +102,19 @@ class AirbnbAccount:
                 'X-Airbnb-Api-Key': 'd306zoyjsyarp7ifhu67rjxn52tv0t20',
                 'X-Csrf-Without-Token': '1'
             }
-
+        self.domain = 'airbnb.com'
         for i in file:
             try:
-                if 'airbnb.' in i['domain']:
+                if '.airbnb.' in i['domain']:
                     if i['domain'][0] == '.':
                         domain = i['domain'][1:]
-                    self.domain = domain
-                self.session.cookies.set(i['name'], i['value'], i['domain'], i['path'])
+                    # self.domain = domain
+
+                self.session.cookies.set(i['name'], i['value'], '.airbnb.com', i['path'])
             except Exception as err:
                 print(err)
                 pass
-    
+
     async def check_cookies(self):
         response = await self.session.get(f'https://{self.domain}/hosting')
         if f'{self.domain}/hosting' in str(response.url):
@@ -153,14 +162,16 @@ class AirbnbAccount:
 
             for i in reservations_raw:
                 # c.convert
+                total_raw = i['earnings'].replace('\xa0', '')
+                print(total_raw)
                 
-                if 'Rp' in i['earnings']:
-                    symbol = 'Rp'
-                else:
-                    symbol = i['earnings'][0]
+                if ',' in total_raw:
+                    total_raw = total_raw.replace(',', '')
                 
-                total = i['earnings'].replace(i['earnings'][0], '').replace('Rp', '').replace('\xa0', '')
-                total = '.'.join(total.replace(',', '.').split('.')[0:2])
+                total = re.findall(r'[\d\.\d]+', total_raw)[0]
+                symbol = total_raw.replace(total, '')
+
+                total = total.strip()
                 print(total)
                 
                 total = round(float(total), 2)

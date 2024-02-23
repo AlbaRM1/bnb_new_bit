@@ -5,6 +5,7 @@ def get_admin_kb():
         [types.InlineKeyboardButton(text="Посмотреть список юзеров", callback_data="view_users")],
         [types.InlineKeyboardButton(text="Отобрать доступ к боту", callback_data="delete_user")],
         [types.InlineKeyboardButton(text="Изменить роль юзеру", callback_data="change_role")],
+        [types.InlineKeyboardButton(text="Отправить сообщение всем юзерам", callback_data="send_all_message")],
     ]
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard

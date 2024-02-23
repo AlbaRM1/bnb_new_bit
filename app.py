@@ -3,7 +3,7 @@ import logging
 from aiogram import Bot, Dispatcher
 
 from config_reader import config
-from handlers import bnb_spam, start, admin_panel
+from handlers import admin_panel, bnb_spam, start
 from database.models import async_main
 
 # Включаем логирование, чтобы не пропустить важные сообщения
