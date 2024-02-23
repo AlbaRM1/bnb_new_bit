@@ -52,6 +52,18 @@ async def del_user(tg_id: int):
     async with async_session() as session:
         result = await session.scalar(select(User).filter_by(tg_id=tg_id))
         
+        domains_id = await get_domains_id(tg_id)
+        proxies = await get_proxies(tg_id)
+        texts = await get_texts(tg_id)
+        
+        print(domains_id, proxies, texts)
+        
+        if domains_id:
+            await session.delete(domains_id[0])
+        if proxies:
+            await session.delete(proxies[0])
+        if texts:
+            await session.delete(texts[0])
         await session.delete(result)
         await session.commit()
         return True

@@ -1,0 +1,5044 @@
+{
+    "currencies": [
+      {
+        "symbol": "AED",
+        "name": "United Arab Emirates Dirham",
+        "symbol_native": "د.إ.‏",
+        "code": "AED",
+        "emoji": "🇦🇪",
+        "equal": [
+          "aed",
+          "dh",
+          "dhs"
+        ],
+        "entry": {
+          "en": [
+            "dirham"
+          ],
+          "ru": [
+            "дирхам"
+          ],
+          "ua": [
+            "дирхам"
+          ],
+          "by": [
+            "дырхам"
+          ],
+          "de":
+          [
+            "dirham"
+          ]
+        }
+      },
+      {
+        "symbol": "Af",
+        "name": "Afghan Afghani",
+        "symbol_native": "؋",
+        "code": "AFN",
+        "emoji": "🇦🇫",
+        "equal": [
+          "afn",
+          "afs",
+          "afa"
+        ],
+        "entry": {
+          "en": [
+            "afghani"
+          ],
+          "ru": [
+            "афгани"
+          ],
+          "ua": [
+            "афганi"
+          ],
+          "by": [
+            "афгані"
+          ],
+          "de":
+          [
+            "afghani"
+          ]
+        }
+      },
+      {
+        "symbol": "ALL",
+        "name": "Albanian Lek",
+        "symbol_native": "Lek",
+        "code": "ALL",
+        "emoji": "🇦🇱",
+        "equal": [
+          "all",
+          "alk"
+        ],
+        "entry": {
+          "en": [
+            "lek"
+          ],
+          "ru": [
+            "лек"
+          ],
+          "ua": [
+            "лек"
+          ],
+          "by": [
+            "лек"
+          ],
+          "de":
+          [
+            "lek"
+          ]
+        }
+      },
+      {
+        "symbol": "AMD",
+        "name": "Armenian Dram",
+        "symbol_native": "դր.",
+        "code": "AMD",
+        "emoji": "🇦🇲",
+        "equal": [
+          "amd",
+          "֏",
+          "֏"
+        ],
+        "entry": {
+          "en": [
+            "dram"
+          ],
+          "ru": [
+            "драм"
+          ],
+          "ua": [
+            "драм"
+          ],
+          "by": [
+            "драм"
+          ],
+          "de":
+          [
+            "dram"
+          ]
+        }
+      },
+      {
+        "symbol": "ƒ",
+        "name": "Netherlands Antillean guilder",
+        "symbol_native": "ƒ",
+        "code": "ANG",
+        "emoji": "🇧🇶",
+        "equal": [
+          "ang",
+          "naƒ",
+          "naf"
+        ],
+        "entry": {
+          "en": [
+            "guilder"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "гульден"
+          ],
+          "by": [
+            "гульдэн"
+          ],
+          "de":
+          [
+            "antillen gulden"
+          ]
+        }
+      },
+      {
+        "symbol": "Kz",
+        "name": "Angolan Kwanza",
+        "symbol_native": "Kz",
+        "code": "AOA",
+        "emoji": "🇦🇴",
+        "equal": [
+          "aoa",
+          "kzr",
+          "kz"
+        ],
+        "entry": {
+          "en": [
+            "kwanza"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "кванз"
+          ],
+          "by": [
+            "кванз"
+          ],
+          "de":
+          [
+            "kwanza"
+          ]
+        }
+      },
+      {
+        "symbol": "AR$",
+        "name": "Argentine Peso",
+        "symbol_native": "$",
+        "code": "ARS",
+        "emoji": "🇦🇷",
+        "equal": [
+          "ars"
+        ],
+        "entry": {
+          "en": [
+            "argentine peso"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "аргентинський песо",
+            "аргентинських песо"
+          ],
+          "by": [
+            "аргентынскі песа",
+            "аргентынскіх песа"
+          ],
+          "de":
+          [
+            "argentinische peso"
+          ]
+        }
+      },
+      {
+        "symbol": "AU$",
+        "name": "Australian Dollar",
+        "symbol_native": "$",
+        "code": "AUD",
+        "emoji": "🇦🇺",
+        "equal": [
+          "aud",
+          "a$",
+          "а$",
+          "au$",
+          "ад"
+        ],
+        "entry": {
+          "en": [
+            "australian dollar"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "австралійський долар",
+            "австралійські долар",
+            "австралійських долар"
+          ],
+          "by": [
+            "аўстралійскі долар",
+            "аўстралійскіх долар"
+          ],
+          "de":
+          [
+            "australische dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "Afl",
+        "name": "Aruban or Dutch Guilder",
+        "symbol_native": "Afl",
+        "code": "AWG",
+        "emoji": "🇦🇼",
+        "equal": [
+          "awg"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "gulden"
+          ]
+        }
+      },
+      {
+        "symbol": "man.",
+        "name": "Azerbaijani Manat",
+        "symbol_native": "ман.",
+        "code": "AZN",
+        "emoji": "🇦🇿",
+        "equal": [
+          "azn",
+          "₼"
+        ],
+        "entry": {
+          "en": [
+            "manat"
+          ],
+          "ru": [
+            "манат"
+          ],
+          "ua": [
+            "манат"
+          ],
+          "by": [
+            "манат"
+          ],
+          "de":
+          [
+            "manat"
+          ]
+        }
+      },
+      {
+        "symbol": "KM",
+        "name": "Bosnia-Herzegovina Convertible Mark",
+        "symbol_native": "KM",
+        "code": "BAM",
+        "emoji": "🇧🇦",
+        "equal": [
+          "bam"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "kovertible mark"
+          ]
+        }
+      },
+      {
+        "symbol": "BBD$",
+        "name": "Barbadian dollar",
+        "symbol_native": "$",
+        "code": "BBD",
+        "emoji": "🇧🇧",
+        "equal": [
+          "bbd"
+        ],
+        "entry": {
+          "en": [
+            "barbados dollar"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "барбадоський долар",
+            "барбадоських долар",
+            "барбадоський доллар",
+            "барбадоських доллар"
+          ],
+          "by": [
+            "барбадоскі долар",
+            "барбадоскіх долар"
+          ],
+          "de":
+          [
+            "barbados dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "Tk",
+        "name": "Bangladeshi Taka",
+        "symbol_native": "৳",
+        "code": "BDT",
+        "emoji": "🇧🇩",
+        "equal": [
+          "bdt"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "taka"
+          ]
+        }
+      },
+      {
+        "symbol": "BGN",
+        "name": "Bulgarian Lev",
+        "symbol_native": "лв.",
+        "code": "BGN",
+        "emoji": "🇧🇬",
+        "equal": [
+          "bgn"
+        ],
+        "entry": {
+          "en": [
+            "bulgarian lev"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "болгарський лев",
+            "болгарських лев"
+          ],
+          "by": [
+            "балгарскі леў",
+            "балгарскіх лев"
+          ],
+          "de":
+          [
+            "bulgarische lew"
+          ]
+  
+        }
+      },
+      {
+        "symbol": "BD",
+        "name": "Bahraini Dinar",
+        "symbol_native": "د.ب.‏",
+        "code": "BHD",
+        "emoji": "🇧🇭",
+        "equal": [
+          "bhd"
+        ],
+        "entry": {
+          "en": [
+            "bahraini dinar"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "бахрейнський динар",
+            "бахрейнських динар"
+          ],
+          "by": [
+            "бахрэйнскі дэнар",
+            "бахрэйнскіх дэнар"
+          ],
+          "de":
+          [
+            "bahrainische dinar"
+          ]
+        }
+      },
+      {
+        "symbol": "FBu",
+        "name": "Burundian Franc",
+        "symbol_native": "FBu",
+        "code": "BIF",
+        "emoji": "🇧🇮",
+        "equal": [
+          "bif"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "бурундыйскі франк",
+            "бурундыйскіх франк"
+          ],
+          "de":
+          [
+            "burundische franc"
+          ]
+        }
+      },
+      {
+        "symbol": "$",
+        "name": "Bermudian Dollar",
+        "symbol_native": "$",
+        "code": "BMD",
+        "emoji": "🇧🇲",
+        "equal": [
+          "bmd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "бермудскі долар",
+            "бермудскіх долар"
+          ],
+          "de":
+          [
+            "bermudische dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "BN$",
+        "name": "Brunei Dollar",
+        "symbol_native": "$",
+        "code": "BND",
+        "emoji": "🇧🇳",
+        "equal": [
+          "bnd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "брунейскі долар",
+            "брунейскіх долар"
+          ],
+          "de":
+          [
+            "brunei dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "Bs",
+        "name": "Bolivian Boliviano",
+        "symbol_native": "Bs",
+        "code": "BOB",
+        "emoji": "🇧🇴",
+        "equal": [
+          "bob"
+        ],
+        "entry": {
+          "en": [
+            "bolíviano"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "болівіан"
+          ],
+          "by": [
+            "балівіан"
+          ],
+          "de":
+          [
+            "boliviano"
+          ]
+        }
+      },
+      {
+        "symbol": "R$",
+        "name": "Brazilian Real",
+        "symbol_native": "R$",
+        "code": "BRL",
+        "emoji": "🇧🇷",
+        "equal": [
+          "brl"
+        ],
+        "entry": {
+          "en": [
+            "brazilian Real"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "бразільський реал",
+            "бразильських реал",
+            "бразильського реал"
+          ],
+          "by": [
+            "бразільскі рэал",
+            "бразільскіх рэал"
+          ],
+          "de":
+          [
+            "brasilianische real"
+          ]
+        }
+      },
+      {
+        "symbol": "B$",
+        "name": "Bahamian Dollar",
+        "symbol_native": "$",
+        "code": "BSD",
+        "emoji": "🇧🇸",
+        "equal": [
+          "bsd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "багамскі долар",
+            "багамскіх долар"
+          ],
+          "de":
+          [
+            "bahamas dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "Nu.",
+        "name": "Bhutanese Ngultrum",
+        "symbol_native": "Nu.",
+        "code": "BTN",
+        "emoji": "🇧🇹",
+        "equal": [
+          "btn"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "бутанскі нгултрум",
+            "бутанскіх нгултрум"
+          ],
+          "de":
+          [
+            "ngultrum"
+          ]
+        }
+      },
+      {
+        "symbol": "BWP",
+        "name": "Botswanan Pula",
+        "symbol_native": "P",
+        "code": "BWP",
+        "emoji": "🇧🇼",
+        "equal": [
+          "bwp"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "батсванская пул",
+            "батсванскіх пул"
+          ],
+          "de":
+          [
+            "pula"
+          ]
+        }
+      },
+      {
+        "symbol": "BYN",
+        "name": "Belarusian Ruble",
+        "symbol_native": "Br",
+        "code": "BYN",
+        "emoji": "🇧🇾",
+        "equal": [
+          "byn",
+          "бр"
+        ],
+        "entry": {
+          "en": [
+            "belarusian ruble",
+            "belarusian rouble"
+          ],
+          "ru": [
+            "белорусский рубл",
+            "белорусских рубл",
+            "белрубл"
+          ],
+          "ua": [
+            "білоруській рубл",
+            "білруб",
+            "білоруських рубл",
+            "білоруського рубл"
+          ],
+          "by": [
+            "беларускі рубл",
+            "беларускіх рубл",
+            "беларускага рубл"
+          ],
+          "de":
+          [
+            "belarussische rubel",
+            "belarussischer rubel",
+            "weißrussischer rubel",
+            "weissrussische rubel"
+          ]
+        }
+      },
+      {
+        "symbol": "BZ$",
+        "name": "Belize Dollar",
+        "symbol_native": "$",
+        "code": "BZD",
+        "emoji": "🇧🇿",
+        "equal": [
+          "bzd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "белізскі долар",
+            "белізскіх долар"
+          ],
+          "de":
+          [
+            "belize dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "CA$",
+        "name": "Canadian Dollar",
+        "symbol_native": "$",
+        "code": "CAD",
+        "emoji": "🇨🇦",
+        "equal": [
+          "cad"
+        ],
+        "entry": {
+          "en": [
+            "canadian dollar"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "канадський долар",
+            "канадський доллар",
+            "канадських доларів",
+            "канадських долларів",
+            "канадського долару",
+            "канадського доллару"
+          ],
+          "by": [
+            "канадскі долар",
+            "канадскіх долар",
+            "канадскага долар"
+          ],
+          "de":
+          [
+            "kanadische dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "CDF",
+        "name": "Congolese Franc",
+        "symbol_native": "FrCD",
+        "code": "CDF",
+        "emoji": "🇨🇩",
+        "equal": [
+          "cdf"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "кангалезскі франк",
+            "кангалезскіх франк"
+          ],
+          "de":
+          [
+            "kongolesische franc"
+          ]
+        }
+      },
+      {
+        "symbol": "CHF",
+        "name": "Swiss Franc",
+        "symbol_native": "CHF",
+        "code": "CHF",
+        "emoji": "🇨🇭",
+        "equal": [
+          "chf",
+          "₣"
+        ],
+        "entry": {
+          "en": [
+            "franc"
+          ],
+          "ru": [
+            "франк"
+          ],
+          "ua": [
+            "франк",
+            "franc"
+          ],
+          "by": [
+            "франк"
+          ],
+          "de":
+          [
+            "franken",
+            "schweizer franken"
+          ]
+        }
+      },
+      {
+        "symbol": "UF",
+        "name": "Unidad de Fomento",
+        "symbol_native": "UF",
+        "code": "CLF",
+        "emoji": "🇨🇱",
+        "equal": [
+          "clf"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "unidad de fomento",
+            "unidades de fomento"
+          ]
+        }
+      },
+      {
+        "symbol": "CL$",
+        "name": "Chilean Peso",
+        "symbol_native": "$",
+        "code": "CLP",
+        "emoji": "🇨🇱",
+        "equal": [
+          "clp"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "чілійський песо",
+            "чілійського песо",
+            "чілійських песо"
+          ],
+          "by": [
+            "чылійскі песа",
+            "чылійскіх песа"
+          ],
+          "de":
+          [
+            "chilenische peso"
+          ]
+        }
+      },
+      {
+        "symbol": "CN¥",
+        "name": "Chinese Yuan",
+        "symbol_native": "CN¥",
+        "code": "CNY",
+        "emoji": "🇨🇳",
+        "equal": [
+          "cny",
+          "rmb"
+        ],
+        "entry": {
+          "en": [
+            "renminbi",
+            "yuan"
+          ],
+          "ru": [
+            "юан",
+            "жэньминьби"
+          ],
+          "ua": [
+            "юан",
+            "женьміньбі"
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "yuan",
+            "renminbi",
+            "renminbi yuan"
+          ]
+        }
+      },
+      {
+        "symbol": "CO$",
+        "name": "Colombian Peso",
+        "symbol_native": "$",
+        "code": "COP",
+        "emoji": "🇨🇴",
+        "equal": [
+          "cop"
+        ],
+        "entry": {
+          "en": [
+            "colombian peso"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "колумбійський песо",
+            "колумбійського песо",
+            "колумбійських песо"
+          ],
+          "by": [
+            "калумбійскі песа",
+            "калумбійскіх песа"
+          ],
+          "de":
+          [
+            "kolumbische peso"
+          ]
+        }
+      },
+      {
+        "symbol": "₡",
+        "name": "Costa Rican Colón",
+        "symbol_native": "₡",
+        "code": "CRC",
+        "emoji": "🇨🇷",
+        "equal": [
+          "crc"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "colón",
+            "costa-rica-colón"
+          ]
+        }
+      },
+      {
+        "symbol": "CUC$",
+        "name": "Cuban convertible peso",
+        "symbol_native": "$",
+        "code": "CUC",
+        "emoji": "🇨🇺",
+        "equal": [
+          "cuc"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "peso convertible"
+          ]
+        }
+      },
+      {
+        "symbol": "$MN",
+        "name": "Cuban peso",
+        "symbol_native": "$",
+        "code": "CUP",
+        "emoji": "🇨🇺",
+        "equal": [
+          "cup"
+        ],
+        "entry": {
+          "en": [
+            "cuban peso"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "кубинський песо",
+            "кубинських песо",
+            "кубинського песо"
+          ],
+          "by": [
+            "кубійскі песа",
+            "кубійскіх песа"
+          ],
+          "de":
+          [
+            "kubanische peso"
+          ]
+        }
+      },
+      {
+        "symbol": "CV$",
+        "name": "Cape Verdean Escudo",
+        "symbol_native": "CV$",
+        "code": "CVE",
+        "emoji": "🇨🇻",
+        "equal": [
+          "cve"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "cap verdische escudo"
+          ]
+        }
+      },
+      {
+        "symbol": "Kč",
+        "name": "Czech Republic Koruna",
+        "symbol_native": "Kč",
+        "code": "CZK",
+        "emoji": "🇨🇿",
+        "equal": [
+          "czk",
+          "kč",
+          "kc"
+        ],
+        "entry": {
+          "en": [
+            "koruna",
+            "krone"
+          ],
+          "ru": [
+            "крон"
+          ],
+          "ua": [
+            "крон"
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "tschechische krone",
+            "tschechische kronen"
+          ]
+        }
+      },
+      {
+        "symbol": "Fdj",
+        "name": "Djiboutian Franc",
+        "symbol_native": "Fdj",
+        "code": "DJF",
+        "emoji": "🇩🇯",
+        "equal": [
+          "djf"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "dschibuti franc"
+          ]
+        }
+      },
+      {
+        "symbol": "Dkr",
+        "name": "Danish Krone",
+        "symbol_native": "kr",
+        "code": "DKK",
+        "emoji": "🇩🇰",
+        "equal": [
+          "dkk"
+        ],
+        "entry": {
+          "en": [
+            "danish krone"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "данська крон",
+            "данських крон",
+            "данської крон"
+          ],
+          "by": [
+            "дацкая крон",
+            "дацкіх крон "
+          ],
+          "de":
+          [
+            "dänische krone"
+          ]
+        }
+      },
+      {
+        "symbol": "RD$",
+        "name": "Dominican Peso",
+        "symbol_native": "RD$",
+        "code": "DOP",
+        "emoji": "🇩🇴",
+        "equal": [
+          "dop"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "дамініканскі песа",
+            "дамініканскіх песа"
+          ],
+          "de":
+          [
+            "dominikanische peso"
+          ]
+        }
+      },
+      {
+        "symbol": "DA",
+        "name": "Algerian Dinar",
+        "symbol_native": "د.ج.‏",
+        "code": "DZD",
+        "emoji": "🇩🇿",
+        "equal": [
+          "dzd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "алжырскі дынар",
+            "алжырскіх дынар"
+          ],
+          "de":
+          [
+            "algerische dinar"
+          ]
+        }
+      },
+      {
+        "symbol": "EGP",
+        "name": "Egyptian Pound",
+        "symbol_native": "ج.م.‏",
+        "code": "EGP",
+        "emoji": "🇪🇬",
+        "equal": [
+          "egp"
+        ],
+        "entry": {
+          "en": [
+            "egyptian pound"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "єгипетський фунт",
+            "єгипетського фунт",
+            "єгипетських фунт"
+          ],
+          "by": [
+            "егіпецкі фунт",
+            "егіпецкіх фунт"
+          ],
+          "de":
+          [
+            "ägyptische pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "Nfk",
+        "name": "Eritrean Nakfa",
+        "symbol_native": "Nfk",
+        "code": "ERN",
+        "emoji": "🇪🇷",
+        "equal": [
+          "ern"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "eritreische nakfa",
+            "nakfa"
+          ]
+        }
+      },
+      {
+        "symbol": "Br",
+        "name": "Ethiopian Birr",
+        "symbol_native": "Br",
+        "code": "ETB",
+        "emoji": "🇪🇹",
+        "equal": [
+          "etb"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "эфіопскі быр",
+            "эфіопскіх быр"
+          ],
+          "de":
+          [
+            "äthiopische birr",
+            "birr"
+          ]
+        }
+      },
+      {
+        "symbol": "€",
+        "name": "Euro",
+        "symbol_native": "€",
+        "code": "EUR",
+        "emoji": "🇪🇺",
+        "equal": [
+          "eur",
+          "€"
+        ],
+        "entry": {
+          "en": [
+            "euro"
+          ],
+          "ru": [
+            "евро"
+          ],
+          "ua": [
+            "євро"
+          ],
+          "by": [
+            "еўра"
+          ],
+          "de":
+          [
+            "euro"
+          ]
+        }
+      },
+      {
+        "symbol": "FJ$",
+        "name": "Fijian dollar",
+        "symbol_native": "$",
+        "code": "FJD",
+        "emoji": "🇫🇯",
+        "equal": [
+          "fjd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "fidschi dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "£",
+        "name": "Falkland Island Pound",
+        "symbol_native": "£",
+        "code": "FKP",
+        "emoji": "🇫🇰",
+        "equal": [
+          "fkp"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "falkländische pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "£",
+        "name": "British Pound Sterling",
+        "symbol_native": "£",
+        "code": "GBP",
+        "emoji": "🇬🇧",
+        "equal": [
+          "gbp",
+          "£"
+        ],
+        "entry": {
+          "en": [
+            "pound sterling",
+            "pounds sterling",
+            "pound"
+          ],
+          "ru": [
+            "фунт",
+            "фунт стерлингов",
+            "фунтов стерлингов",
+            "фунта стерлингов"
+          ],
+          "ua": [
+            "фунт стерлінгів",
+            "фунти стерлінгів",
+            "фунтів стерлінгів"
+          ],
+          "by": [
+            "фунт сцерлінг",
+            "фунты сцерлінг",
+            "фунтаў сцерлінг"
+          ],
+          "de":
+          [
+            "britische pfund",
+            "britisches pfund",
+            "sterling pfund",
+            "pfund sterling",
+            "pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "GEL",
+        "name": "Georgian Lari",
+        "symbol_native": "GEL",
+        "code": "GEL",
+        "emoji": "🇬🇪",
+        "equal": [
+          "gel",
+          "₾"
+        ],
+        "entry": {
+          "en": [
+            "georgian lari",
+            "lari"
+          ],
+          "ru": [
+            "лари"
+          ],
+          "ua": [
+            "ларі"
+          ],
+          "by": [
+            "лары"
+          ],
+          "de":
+          [
+            "georgische lari"
+          ]
+        }
+      },
+      {
+        "symbol": "£",
+        "name": "Guernsey Pound",
+        "symbol_native": "£",
+        "code": "GGP",
+        "emoji": "🇬🇬",
+        "equal": [
+          "ggp"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "guernsey pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "GH₵",
+        "name": "Ghanaian Cedi",
+        "symbol_native": "GH₵",
+        "code": "GHS",
+        "emoji": "🇬🇭",
+        "equal": [
+          "ghs"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "ghana cedi",
+            "ghanaische cedi"
+          ]
+        }
+      },
+      {
+        "symbol": "£",
+        "name": "Gibraltar Pound",
+        "symbol_native": "£",
+        "code": "GIP",
+        "emoji": "🇬🇮",
+        "equal": [
+          "gip"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "гібралтарскі фунт",
+            "гібралтарскіх фунт"
+          ],
+          "de":
+          [
+            "gibraltar pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "D",
+        "name": "Gambian Dalasi",
+        "symbol_native": "D",
+        "code": "GMD",
+        "emoji": "🇬🇲",
+        "equal": [
+          "gmd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "dalasi"
+          ]
+        }
+      },
+      {
+        "symbol": "FG",
+        "name": "Guinean Franc",
+        "symbol_native": "FG",
+        "code": "GNF",
+        "emoji": "🇬🇳",
+        "equal": [
+          "gnf"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "гвінейскі франк",
+            "гвінейскіх франк"
+          ],
+          "de":
+          [
+            "guinea franc"
+          ]
+        }
+      },
+      {
+        "symbol": "GTQ",
+        "name": "Guatemalan Quetzal",
+        "symbol_native": "Q",
+        "code": "GTQ",
+        "emoji": "🇬🇹",
+        "equal": [
+          "gtq"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "quetzal"
+          ]
+        }
+      },
+      {
+        "symbol": "G$",
+        "name": "Guyanese dollar",
+        "symbol_native": "$",
+        "code": "GYD",
+        "emoji": "🇬🇾",
+        "equal": [
+          "gyd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "guyana dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "HK$",
+        "name": "Hong Kong Dollar",
+        "symbol_native": "$",
+        "code": "HKD",
+        "emoji": "🇭🇰",
+        "equal": [
+          "hkd",
+          "元",
+          "hk$"
+        ],
+        "entry": {
+          "en": [
+            "hongkong dollar"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "гонконгський долар",
+            "гонконгський доллар",
+            "гонконгських долар",
+            "гонконгських доллар",
+            "гонконгського долар",
+            "гонконгського доллар",
+            "долар гонконг",
+            "доллар гонконг",
+            "гонконзьких долар",
+            "гонконзьких доллар"
+          ],
+          "by": [
+            "ганконгскі долар",
+            "ганконгскіх долар"
+          ],
+          "de":
+          [
+            "hongkong dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "HNL",
+        "name": "Honduran Lempira",
+        "symbol_native": "L",
+        "code": "HNL",
+        "emoji": "🇭🇳",
+        "equal": [
+          "hnl"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "lempira"
+          ]
+        }
+      },
+      {
+        "symbol": "kn",
+        "name": "Croatian Kuna",
+        "symbol_native": "kn",
+        "code": "HRK",
+        "emoji": "🇭🇷",
+        "equal": [
+          "hrk"
+        ],
+        "entry": {
+          "en": [
+            "croatian kuna",
+            "kuna"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "хорватська куна",
+            "хорватських кун",
+            "хорватської кун"
+          ],
+          "by": [
+            "харвацкая куна",
+            "харвацкіх кун"
+          ],
+          "de":
+          [
+            "kroatische kuna"
+          ]
+        }
+      },
+      {
+        "symbol": "G",
+        "name": "Haitian Gourde",
+        "symbol_native": "G",
+        "code": "HTG",
+        "emoji": "🇭🇹",
+        "equal": [
+          "htg"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "gourde"
+          ]
+        }
+      },
+      {
+        "symbol": "Ft",
+        "name": "Hungarian Forint",
+        "symbol_native": "Ft",
+        "code": "HUF",
+        "emoji": "🇭🇺",
+        "equal": [
+          "huf"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "венгерскі фарынт",
+            "венгерскіх фарынт"
+          ],
+          "de":
+          [
+            "ungarische forint"
+          ]
+        }
+      },
+      {
+        "symbol": "Rp",
+        "name": "Indonesian Rupiah",
+        "symbol_native": "Rp",
+        "code": "IDR",
+        "emoji": "🇮🇩",
+        "equal": [
+          "idr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "інданэзійская рупія",
+            "інданэзійскіх рупій"
+          ],
+          "de":
+          [
+            "indonesische rupiah"
+          ]
+        }
+      },
+      {
+        "symbol": "₪",
+        "name": "Israeli New Sheqel",
+        "symbol_native": "₪",
+        "code": "ILS",
+        "emoji": "🇮🇱",
+        "equal": [
+          "ils",
+          "nis",
+          "₪"
+        ],
+        "entry": {
+          "en": [
+            "shekel"
+          ],
+          "ru": [
+            "шекел"
+          ],
+          "ua": [
+            "шекел"
+          ],
+          "by": [
+            "шэкел"
+          ],
+          "de":
+          [
+            "israelischer neuer schekel",
+            "israelischer neuer schekel",
+            "israelische schekel",
+            "schekel"
+          ]
+        }
+      },
+      {
+        "symbol": "£",
+        "name": "Isle of Man Pound",
+        "symbol_native": "£",
+        "code": "IMP",
+        "emoji": "🇮🇲",
+        "equal": [
+          "imp"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "isle-of-man pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "Rs",
+        "name": "Indian Rupee",
+        "symbol_native": "₹",
+        "code": "INR",
+        "emoji": "🇮🇳",
+        "equal": [
+          "inr",
+          "₹"
+        ],
+        "entry": {
+          "en": [
+            "rupee"
+          ],
+          "ru": [
+            "рупи"
+          ],
+          "ua": [
+            "рупі",
+            "індійська рупія",
+            "індійських рупі",
+            "індійської рупі"
+          ],
+          "by": [
+            "рупі",
+            "індыйская рупі",
+            "індыйскіх рупі"
+          ],
+          "de":
+          [
+            "indische rupie",
+            "rupie"
+          ]
+        }
+      },
+      {
+        "symbol": "IQD",
+        "name": "Iraqi Dinar",
+        "symbol_native": "د.ع.‏",
+        "code": "IQD",
+        "emoji": "🇮🇶",
+        "equal": [
+          "iqd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "іракскі дынар",
+            "іракскіх дынар"
+          ],
+          "de":
+          [
+            "irakische dinar",
+            "irakischer dinar",
+            "Irak-Dinar"
+          ]
+        }
+      },
+      {
+        "symbol": "IRR",
+        "name": "Iranian Rial",
+        "symbol_native": "﷼",
+        "code": "IRR",
+        "emoji": "🇮🇷",
+        "equal": [
+          "irr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "іранскі рыал",
+            "іранскіх рыал"
+          ],
+          "de":
+          [
+            "iranischer rial",
+            "iranische rial"
+          ]
+        }
+      },
+      {
+        "symbol": "Ikr",
+        "name": "Icelandic Króna",
+        "symbol_native": "kr",
+        "code": "ISK",
+        "emoji": "🇮🇸",
+        "equal": [
+          "isk"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "ісландська крона",
+            "ісландських крон",
+            "ісланської крон",
+            "ісландськими крон"
+          ],
+          "by": [
+            "ісландская крона",
+            "ісландскіх крон"
+          ],
+          "de":
+          [
+            "isländische krone"
+          ]
+        }
+      },
+      {
+        "symbol": "£",
+        "name": "Jersey pound",
+        "symbol_native": "£",
+        "code": "JEP",
+        "emoji": "🇯🇪",
+        "equal": [
+          "jep"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "jersey pfund",
+            "jersey sterling pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "J$",
+        "name": "Jamaican Dollar",
+        "symbol_native": "$",
+        "code": "JMD",
+        "emoji": "🇯🇲",
+        "equal": [
+          "jmd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "ямайскі долар",
+            "ямайскіх долар"
+          ],
+          "de":
+          [
+            "jamaika dollar",
+            "jamaikanischer dollar",
+            "jamaikanische dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "JD",
+        "name": "Jordanian Dinar",
+        "symbol_native": "د.أ.‏",
+        "code": "JOD",
+        "emoji": "🇯🇴",
+        "equal": [
+          "jod"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "іарданскі дынар",
+            "іарданскіх дынар"
+          ],
+          "de":
+          [
+            "jordanischer dinar",
+            "jordanische dinar"
+          ]
+        }
+      },
+      {
+        "symbol": "¥",
+        "name": "Japanese Yen",
+        "symbol_native": "￥",
+        "code": "JPY",
+        "emoji": "🇯🇵",
+        "equal": [
+          "jpy",
+          "єн",
+          "єна"
+        ],
+        "entry": {
+          "en": [
+            "yen",
+            "japanese yen"
+          ],
+          "ru": [
+            "иен",
+            "иена",
+            "йен",
+            "йена"
+          ],
+          "ua": [
+            "японська єна",
+            "японських єн"
+          ],
+          "by": [
+            "ен",
+            "японская ен",
+            "японскіх ен"
+          ],
+          "de":
+          [
+            "yen",
+            "japanischer yen",
+            "japanische yen"
+          ]
+        }
+      },
+      {
+        "symbol": "Ksh",
+        "name": "Kenyan Shilling",
+        "symbol_native": "Ksh",
+        "code": "KES",
+        "emoji": "🇰🇪",
+        "equal": [
+          "kes"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "кенійскі шылінг",
+            "кенійскіх шылінг"
+          ],
+          "de":
+          [
+            "kenia schilling",
+            "kenianischer schilling",
+            "kenianische schilling"
+          ]
+        }
+      },
+      {
+        "symbol": "С̲",
+        "name": "Kyrgyzstani som",
+        "symbol_native": "С̲",
+        "code": "KGS",
+        "emoji": "🇰🇬",
+        "equal": [
+          "kgs"
+        ],
+        "entry": {
+          "en": [
+            "kyrgyzstani som"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "киргизький сом",
+            "киргизьких сом",
+            "киргизького сом"
+          ],
+          "by": [
+            "кіргізскі сом",
+            "кіргізскіх сом"
+          ],
+          "de":
+          [
+            "kirgisischer som",
+            "kirgisische som"
+          ]
+        }
+      },
+      {
+        "symbol": "KHR",
+        "name": "Cambodian Riel",
+        "symbol_native": "៛",
+        "code": "KHR",
+        "emoji": "🇰🇭",
+        "equal": [
+          "khr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "камбаджыйскі рыэль",
+            "камбаджыйскіх рыэль"
+          ],
+          "de":
+          [
+            "kambodschanischer riel",
+            "kambodschanische riel"
+          ]
+        }
+      },
+      {
+        "symbol": "CF",
+        "name": "Comorian Franc",
+        "symbol_native": "FC",
+        "code": "KMF",
+        "emoji": "🇰🇲",
+        "equal": [
+          "kmf"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "каморскі франк",
+            "каморскіх франк"
+          ],
+          "de":
+          [
+            "komoren franc",
+            "komoren-franc",
+            "komorische franc",
+            "komorischer franc"
+          ]
+        }
+      },
+      {
+        "symbol": "₩",
+        "name": "North Korean Won",
+        "symbol_native": "₩",
+        "code": "KPW",
+        "emoji": "🇰🇵",
+        "equal": [
+          "kpw"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "паўночнакарэйская вон",
+            "паўночнакарэйскіх вон"
+          ],
+          "de":
+          [
+            "nordkoreanischer won",
+            "nordkoreanische won"
+          ]
+        }
+      },
+      {
+        "symbol": "₩",
+        "name": "South Korean Won",
+        "symbol_native": "₩",
+        "code": "KRW",
+        "emoji": "🇰🇷",
+        "equal": [
+          "krw",
+          "₩"
+        ],
+        "entry": {
+          "en": [
+            "won",
+            "southkorean won",
+            "korean won"  
+          ],
+          "ru": [
+            "корейских вон",
+            "корейский вон"
+          ],
+          "ua": [
+            "південнокорейський вон",
+            "південнокорейських вон",
+            "південнокорейського вон",
+            "південнокорейськими вон",
+            "корейський вон",
+            "корейських вон",
+            "корейського вон",
+            "корейськими вон"
+          ],
+          "by": [
+            "паўдневакарэйская вон",
+            "паўдневакарэйскіх вон"
+          ],
+          "de":
+          [
+            "südkoreanischer won",
+            "südkoreanische won"
+          ]
+        }
+      },
+      {
+        "symbol": "KD",
+        "name": "Kuwaiti Dinar",
+        "symbol_native": "د.ك.‏",
+        "code": "KWD",
+        "emoji": "🇰🇼",
+        "equal": [
+          "kwd"
+        ],
+        "entry": {
+          "en": [
+            "kuwaiti dinar",
+            "dinar"
+          ],
+          "ru": [
+            "динар"
+          ],
+          "ua": [
+            "динар"
+          ],
+          "by": [
+            "кувэйцкі дынар",
+            "кувэйцкіх дынар"
+          ],
+          "de":
+          [
+            "kuwaitischer dinar",
+            "kuwaitische dinar"
+          ]
+        }
+      },
+      {
+        "symbol": "$",
+        "name": "Cayman Islands dollar",
+        "symbol_native": "$‏",
+        "code": "KYD",
+        "emoji": "🇰🇾",
+        "equal": [
+          "kyd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "кайманскі долар",
+            "кайманскіх долар"
+          ],
+          "de":
+          [
+            "cayman dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "KZT",
+        "name": "Kazakhstani Tenge",
+        "symbol_native": "₸",
+        "code": "KZT",
+        "emoji": "🇰🇿",
+        "equal": [
+          "kzt",
+          "₸",
+          "тг",
+          "тнг"
+        ],
+        "entry": {
+          "en": [
+            "tenge",
+            "kazakhstani tenge",
+            "kazakhstan tenge"
+          ],
+          "ru": [
+            "тенге"
+          ],
+          "ua": [
+            "тенге",
+            "теньге"
+          ],
+          "by": [
+            "тэнге"
+          ],
+          "de":
+          [
+            "kasachischer tenge",
+            "kasachische tenge"
+          ]
+        }
+      },
+      {
+        "symbol": "₭",
+        "name": "Lao kip",
+        "symbol_native": "₭‏",
+        "code": "LAK",
+        "emoji": "🇱🇦",
+        "equal": [
+          "lak"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "lao kip",
+            "kip",
+            "laotischer kip",
+            "laotische kip"
+          ]
+        }
+      },
+      {
+        "symbol": "LB£",
+        "name": "Lebanese Pound",
+        "symbol_native": "ل.ل.‏",
+        "code": "LBP",
+        "emoji": "🇱🇧",
+        "equal": [
+          "lbp"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "ліванскі фунт",
+            "ліванскіх фунт"
+          ],
+          "de":
+          [
+            "libanesisches pfund",
+            "libanesischer pfund",
+            "libanesische pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "SLRs",
+        "name": "Sri Lankan Rupee",
+        "symbol_native": "SL Re",
+        "code": "LKR",
+        "emoji": "🇱🇰",
+        "equal": [
+          "lkr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "шры-ланкійская рупі",
+            "шры-ланкійскіх рупі"
+          ],
+          "de":
+          [
+            "sri-lanka rupie",
+            "sri-lankische rupie",
+            "sri-lankischer rupie",
+            "sri lanka rupie",
+            "sri lankische rupie",
+            "sri lankischer rupie"
+          ]
+        }
+      },
+      {
+        "symbol": "$",
+        "name": "Liberian Dollar",
+        "symbol_native": "$",
+        "code": "LRD",
+        "emoji": "🇱🇷",
+        "equal": [
+          "lrd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "ліберыйскі долар",
+            "ліберыйскіх долар"
+          ],
+          "de":
+          [
+            "liberianischer dollar",
+            "liberianische dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "L",
+        "name": "Basotho Loti",
+        "symbol_native": "L",
+        "code": "LSL",
+        "emoji": "🇱🇸",
+        "equal": [
+          "lsl"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "loti",
+            "lesothischer loti",
+            "lesothische loti"
+          ]
+        }
+      },
+      {
+        "symbol": "Lt",
+        "name": "Lithuanian Litas",
+        "symbol_native": "Lt",
+        "code": "LTL",
+        "emoji": "🇱🇹",
+        "equal": [
+          "ltl",
+          "лит",
+          "літ"
+        ],
+        "entry": {
+          "en": [
+            "lithuanian litas",
+            "litas"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "литовський лит",
+            "литовських лит",
+            "литовського лит",
+            "литовськими лит"
+          ],
+          "by": [
+            "літоўскі літ",
+            "літоўскіх літ"
+          ],
+          "de":
+          [
+            "litauischer litas",
+            "litauische litas",
+            "litas"
+          ]
+        }
+      },
+      {
+        "symbol": "Ls",
+        "name": "Latvian Lats",
+        "symbol_native": "Ls",
+        "code": "LVL",
+        "emoji": "🇱🇻",
+        "equal": [
+          "lvl",
+          "лат"
+        ],
+        "entry": {
+          "en": [
+            "latvian lats",
+            "lats",
+            "latvian lati",
+            "lati"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "латвійський лат",
+            "латвійських лат",
+            "латвійського лат",
+            "латвійськими лат"
+          ],
+          "by": [
+            "лат",
+            "латвійскі лат",
+            "латвійскіх лат"
+          ],
+          "de":
+          [
+            "lettischer lats",
+            "lettische lats",
+            "lats"
+          ]
+        }
+      },
+      {
+        "symbol": "LD",
+        "name": "Libyan Dinar",
+        "symbol_native": "د.ل.‏",
+        "code": "LYD",
+        "emoji": "🇱🇾",
+        "equal": [
+          "lyd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "лібійскі дынар",
+            "лібійскіх дынар"
+          ],
+          "de":
+          [
+            "libyscher dinar",
+            "libysche dinar"
+          ]
+        }
+      },
+      {
+        "symbol": "MAD",
+        "name": "Moroccan Dirham",
+        "symbol_native": "د.م.‏",
+        "code": "MAD",
+        "emoji": "🇲🇦",
+        "equal": [
+          "mad"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "мараканскі дырхам",
+            "мараканскіх дырхам"
+          ],
+          "de":
+          [
+            "marokkanischer dirham",
+            "marokkanische dirham"
+          ]
+        }
+      },
+      {
+        "symbol": "MDL",
+        "name": "Moldovan Leu",
+        "symbol_native": "MDL",
+        "code": "MDL",
+        "emoji": "🇲🇩",
+        "equal": [
+          "mdl",
+          "leu",
+          "лей",
+          "лея",
+          "лею",
+          "леї"
+        ],
+        "entry": {
+          "en": [
+            "moldovan leu"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "молдавські леї",
+            "молдавських леїв",
+            "молдавського лея",
+            "молдавськими леям"
+          ],
+          "by": [
+            "малдаўскі лей",
+            "малдоўскі лей",
+            "малдаўскіх лея",
+            "малдоўскіх лея"
+          ],
+          "de":
+          [
+            "moldauischer leu",
+            "moldauische leu"
+          ]
+        }
+      },
+      {
+        "symbol": "MGA",
+        "name": "Malagasy Ariary",
+        "symbol_native": "MGA",
+        "code": "MGA",
+        "emoji": "🇲🇬",
+        "equal": [
+          "mga"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "madagassische ariary",
+            "madagassischer ariary"
+          ]
+        }
+      },
+      {
+        "symbol": "MKD",
+        "name": "Macedonian Denar",
+        "symbol_native": "MKD",
+        "code": "MKD",
+        "emoji": "🇲🇰",
+        "equal": [
+          "mkd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "македонскі дынар",
+            "макендонскіх дынар"
+          ],
+          "de":
+          [
+            "mazedonischer denar",
+            "mazedonische denar"
+          ]
+        }
+      },
+      {
+        "symbol": "MMK",
+        "name": "Myanma Kyat",
+        "symbol_native": "K",
+        "code": "MMK",
+        "emoji": "🇲🇲",
+        "equal": [
+          "mmk"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            "кьят"
+          ],
+          "ua": [
+            "к'ят"
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "myanmarischer kyat",
+            "myanmarische kyat",
+            "kyat"
+          ]
+        }
+      },
+      {
+        "symbol": "₮",
+        "name": "Mongolian Tughrik",
+        "symbol_native": "₮",
+        "code": "MNT",
+        "emoji": "🇲🇳",
+        "equal": [
+          "mnt"
+        ],
+        "entry": {
+          "en": [
+            "mongolian tughrik"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "тугрик",
+            "монгольський тугрик",
+            "монгольських тугрик",
+            "монгольського тугрик",
+            "монгольськими тугрик"
+          ],
+          "by": [
+            "тугрык",
+            "мангольскі тугрык",
+            "мангольскіх тугрык"
+          ],
+          "de":
+          [
+            "tögrög",
+            "tugrik",
+            "mongolischer tugrik",
+            "mongolische tugrik",
+            "mongolischer tögrög",
+            "mongolische tögrög"
+          ]
+        }
+      },
+      {
+        "symbol": "MOP$",
+        "name": "Macanese Pataca",
+        "symbol_native": "MOP$",
+        "code": "MOP",
+        "emoji": "🇲🇴",
+        "equal": [
+          "mop"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "macau pataca"
+          ]
+        }
+      },
+      {
+        "symbol": "UM",
+        "name": "Mauritanian Ouguiya",
+        "symbol_native": "أوقية‎",
+        "code": "MRO",
+        "emoji": "🇲🇷",
+        "equal": [
+          "mro"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "mauretanischer ouguiya",
+            "mauretanische ouguiya"
+          ]
+        }
+      },
+      {
+        "symbol": "MURs",
+        "name": "Mauritian Rupee",
+        "symbol_native": "MURs",
+        "code": "MUR",
+        "emoji": "🇲🇺",
+        "equal": [
+          "mur"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "mauritius rupie"
+          ]
+        }
+      },
+      {
+        "symbol": "MVR",
+        "name": "Maldivian Rufiyaa",
+        "symbol_native": "ރ",
+        "code": "MVR",
+        "emoji": "🇲🇻",
+        "equal": [
+          "mvr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "maledivische rufiyaa",
+            "maledivischer rufiyaa"
+          ]
+        }
+      },
+      {
+        "symbol": "MK",
+        "name": "Malawian Kwacha",
+        "symbol_native": "MK",
+        "code": "MWK",
+        "emoji": "🇲🇼",
+        "equal": [
+          "mwk"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "maledivische rufiyaa",
+            "maledivischer rufiyaa"
+          ]
+        }
+      },
+      {
+        "symbol": "MX$",
+        "name": "Mexican Peso",
+        "symbol_native": "$",
+        "code": "MXN",
+        "emoji": "🇲🇽",
+        "equal": [
+          "mxn"
+        ],
+        "entry": {
+          "en": [
+            "mexican peso"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "мексиканський песо",
+            "мексиканських песо",
+            "мексиканського песо",
+            "мексиканськими песо"
+          ],
+          "by": [
+            "мексіканскі песа",
+            "мексіканскіх песа "
+          ],
+          "de":
+          [
+            "mexikanischer peso",
+            "mexikanische peso"
+          ]
+        }
+      },
+      {
+        "symbol": "RM",
+        "name": "Malaysian Ringgit",
+        "symbol_native": "RM",
+        "code": "MYR",
+        "emoji": "🇲🇾",
+        "equal": [
+          "myr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "malaysischer ringgit",
+            "malaysische ringgit",
+            "ringgit"
+          ]
+        }
+      },
+      {
+        "symbol": "MTn",
+        "name": "Mozambican Metical",
+        "symbol_native": "MTn",
+        "code": "MZN",
+        "emoji": "🇲🇿",
+        "equal": [
+          "mzn"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "mosambikanischer metical",
+            "mosambikanische metical",
+            "metical",
+            "meticais",
+            "neue metical"
+          ]
+        }
+      },
+      {
+        "symbol": "N$",
+        "name": "Namibian Dollar",
+        "symbol_native": "N$",
+        "code": "NAD",
+        "emoji": "🇳🇦",
+        "equal": [
+          "nad"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "намібскі долар",
+            "намібскіх долар"
+          ],
+          "de":
+          [
+            "namibia dollar",
+            "namibischer dollar",
+            "namibische dollar",
+            "namibia-dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "₦",
+        "name": "Nigerian Naira",
+        "symbol_native": "₦",
+        "code": "NGN",
+        "emoji": "🇳🇬",
+        "equal": [
+          "ngn"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "nigerianischer naira",
+            "nigerianische naira",
+            "naira"
+          ]
+        }
+      },
+      {
+        "symbol": "C$",
+        "name": "Nicaraguan Córdoba",
+        "symbol_native": "C$",
+        "code": "NIO",
+        "emoji": "🇳🇮",
+        "equal": [
+          "nio"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "nicaraguanischer córdoba",
+            "nicaraguanische córdoba",
+            "córdoba",
+            "córdoba oro"
+          ]
+        }
+      },
+      {
+        "symbol": "Nkr",
+        "name": "Norwegian Krone",
+        "symbol_native": "kr",
+        "code": "NOK",
+        "emoji": "🇳🇴",
+        "equal": [
+          "nok"
+        ],
+        "entry": {
+          "en": [
+            "norwegian krone"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "норвезька крона",
+            "норвезьких крон",
+            "норвезької крон",
+            "норвезькими крон"
+          ],
+          "by": [
+            "нарвежская крон",
+            "нарвежскіх крон"
+          ],
+          "de":
+          [
+            "norwegische krone",
+            "norwegischer krone"
+          ]
+        }
+      },
+      {
+        "symbol": "NPRs",
+        "name": "Nepalese Rupee",
+        "symbol_native": "नेरू",
+        "code": "NPR",
+        "emoji": "🇳🇵",
+        "equal": [
+          "npr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "nepalesische rupie",
+            "nepalesischer rupie"
+          ]
+        }
+      },
+      {
+        "symbol": "NZ$",
+        "name": "New Zealand Dollar",
+        "symbol_native": "$",
+        "code": "NZD",
+        "emoji": "🇳🇿",
+        "equal": [
+          "nzd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "новазеландскі долар",
+            "новазеландскіх долар"
+          ],
+          "de":
+          [
+            "neuseeland dollar",
+            "neuseeländischer dollar",
+            "neuseeländische dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "OMR",
+        "name": "Omani Rial",
+        "symbol_native": "ر.ع.‏",
+        "code": "OMR",
+        "emoji": "🇴🇲",
+        "equal": [
+          "omr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "omanischer rial",
+            "omanische rial"
+          ]
+        }
+      },
+      {
+        "symbol": "B/.",
+        "name": "Panamanian Balboa",
+        "symbol_native": "B/.",
+        "code": "PAB",
+        "emoji": "🇵🇦",
+        "equal": [
+          "pab"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "panamaischer balboa",
+            "panamaische balboa"
+          ]
+        }
+      },
+      {
+        "symbol": "S/.",
+        "name": "Peruvian Nuevo Sol",
+        "symbol_native": "S/.",
+        "code": "PEN",
+        "emoji": "🇵🇪",
+        "equal": [
+          "pen"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "peruanischer nuevo sol",
+            "peruanische nuevo sol",
+            "nuevo sol",
+            "peruanischer sol",
+            "peruanische sol"
+          ]
+        }
+      },
+      {
+        "symbol": "K",
+        "name": "Papua New Guinean Kina",
+        "symbol_native": "K",
+        "code": "PGK",
+        "emoji": "🇵🇬",
+        "equal": [
+          "pgk"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "papua-neuguineischer kina",
+            "papua-neuguineische kina"
+          ]
+        }
+      },
+      {
+        "symbol": "₱",
+        "name": "Philippine Peso",
+        "symbol_native": "₱",
+        "code": "PHP",
+        "emoji": "🇵🇭",
+        "equal": [
+          "php"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "філіпінскі песа",
+            "філіпінскіх песа"
+          ],
+          "de":[
+            "philippinischer peso",
+            "philippinische peso"
+          ]
+        }
+      },
+      {
+        "symbol": "PKRs",
+        "name": "Pakistani Rupee",
+        "symbol_native": "₨",
+        "code": "PKR",
+        "emoji": "🇵🇰",
+        "equal": [
+          "pkr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "pakistanische rupie",
+            "pakistanischer rupie"
+          ]
+        }
+      },
+      {
+        "symbol": "zł",
+        "name": "Polish Zloty",
+        "symbol_native": "zł",
+        "code": "PLN",
+        "emoji": "🇵🇱",
+        "equal": [
+          "pln",
+          "zł",
+          "plz",
+          "зл",
+          "zl",
+          "złoty"
+        ],
+        "entry": {
+          "en": [
+            "zloty",
+            "polish zloty"
+          ],
+          "ru": [
+            "злот"
+          ],
+          "ua": [
+            "злот",
+            "польські злот",
+            "польських злот",
+            "польськими злот",
+            "польського злот"
+          ],
+          "by": [
+            "польскі злот",
+            "польскіх злот"
+          ],
+          "de":
+          [
+            "polnischer zloty",
+            "polnische zloty",
+            "zloty"
+          ]
+        }
+      },
+      {
+        "symbol": "₲",
+        "name": "Paraguayan Guarani",
+        "symbol_native": "₲",
+        "code": "PYG",
+        "emoji": "🇵🇾",
+        "equal": [
+          "pyg"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "paraguayischer guarani",
+            "paraguayische guarani",
+            "paraguayischer guaraní",
+            "paraguayische guaraní"
+          ]
+        }
+      },
+      {
+        "symbol": "QR",
+        "name": "Qatari Rial",
+        "symbol_native": "ر.ق.‏",
+        "code": "QAR",
+        "emoji": "🇶🇦",
+        "equal": [
+          "qar"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "katarischer rial",
+            "katarische rial",
+            "katar-riyal",
+            "katarischer riyal",
+            "katarische riyal",
+            "qatar rial"
+          ]
+        }
+      },
+      {
+        "symbol": "RON",
+        "name": "Romanian Leu",
+        "symbol_native": "RON",
+        "code": "RON",
+        "emoji": "🇷🇴",
+        "equal": [
+          "ron"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "румынскі лей",
+            "румынскіх ле"
+          ],
+          "de":[
+            "rumänischer leu",
+            "rumänische leu"
+          ]
+        }
+      },
+      {
+        "symbol": "din.",
+        "name": "Serbian Dinar",
+        "symbol_native": "дин.",
+        "code": "RSD",
+        "emoji": "🇷🇸",
+        "equal": [
+          "rsd"
+        ],
+        "entry": {
+          "en": [
+            "serbian dinar"
+          ],
+          "ru": [
+            "сербский динар",
+            "сербских динар"
+          ],
+          "ua": [
+            "сербський динар",
+            "сербського динар",
+            "сербських динар",
+            "сербськими динар",
+            "сербські динар"
+          ],
+          "by": [
+            "сербскі дынар",
+            "сербскіх дынар"
+          ],
+          "de":
+          [
+            "serbischer dinar",
+            "serbische dinar"
+          ]
+        }
+      },
+      {
+        "symbol": "RUB",
+        "name": "Russian Ruble",
+        "symbol_native": "₽",
+        "code": "RUB",
+        "emoji": "🇷🇺",
+        "equal": [
+          "rub",
+          "rur",
+          "руб",
+          "₽"
+        ],
+        "entry": {
+          "en": [
+            "rubl",
+            "rouble"
+          ],
+          "ru": [
+            "рубл"
+          ],
+          "ua": [
+            "рубл",
+            "рублів",
+            "кацапських грошей"
+          ],
+          "by": [
+            "кацапскіх грош",
+            "кацапскі грош"
+          ],
+          "de":
+          [
+            "russischer rubel",
+            "russische rubel",
+            "rubel"
+          ]
+        }
+      },
+      {
+        "symbol": "RWF",
+        "name": "Rwandan Franc",
+        "symbol_native": "FR",
+        "code": "RWF",
+        "emoji": "🇷🇼",
+        "equal": [
+          "rwf"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "ruandische franc",
+            "ruandischer franc"
+          ]
+        }
+      },
+      {
+        "symbol": "SR",
+        "name": "Saudi Riyal",
+        "symbol_native": "ر.س.‏",
+        "code": "SAR",
+        "emoji": "🇸🇦",
+        "equal": [
+          "sar"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "saudi-arabischer riyal",
+            "saudi-arabische riyal",
+            "saudische rial",
+            "saudischer rial"
+          ]
+        }
+      },
+      {
+        "symbol": "$",
+        "name": "Solomon Islander Dollar",
+        "symbol_native": "$",
+        "code": "SBD",
+        "emoji": "🇸🇧",
+        "equal": [
+          "sbd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "salomonische dollar",
+            "salomonischer dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "₨",
+        "name": "Seychellois Rupee",
+        "symbol_native": "₨",
+        "code": "SCR",
+        "emoji": "🇸🇨",
+        "equal": [
+          "scr"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":
+          [
+            "seychellen rupie",
+            "seychellen-rupie",
+            "seychellische rupie",
+            "seychellische rupien"
+          ]
+        }
+      },
+      {
+        "symbol": "SDG",
+        "name": "Sudanese Pound",
+        "symbol_native": "SDG",
+        "code": "SDG",
+        "emoji": "🇸🇩",
+        "equal": [
+          "sdg"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+        "de":[
+            "sudanesisches pfund",
+            "sudanesischer pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "Skr",
+        "name": "Swedish Krona",
+        "symbol_native": "kr",
+        "code": "SEK",
+        "emoji": "🇸🇪",
+        "equal": [
+          "sek"
+        ],
+        "entry": {
+          "en": [
+            "swedish krona"
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            "шведська крона",
+            "шведських крон",
+            "шведської крон",
+            "шведськими крон",
+            "шведські крон"
+          ],
+          "by": [
+            "шведская крон",
+            "шведскіх крон"
+          ],
+          "de":
+          [
+            "schwedische krone",
+            "schwedischer krone"
+          ]
+        }
+      },
+      {
+        "symbol": "S$",
+        "name": "Singapore Dollar",
+        "symbol_native": "$",
+        "code": "SGD",
+        "emoji": "🇸🇬",
+        "equal": [
+          "sgd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "сінгапурскі долар",
+            "сінгапурскіх долар"
+          ],
+          "de":
+          [
+            "singapur dollar",
+            "singapur-dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "£",
+        "name": "Saint Helenian Pound",
+        "symbol_native": "£",
+        "code": "SHP",
+        "emoji": "🇸🇭",
+        "equal": [
+          "shp"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "st.-helena pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "Le",
+        "name": "Sierra Leonean Leone",
+        "symbol_native": "Le",
+        "code": "SLL",
+        "emoji": "🇸🇱",
+        "equal": [
+          "sll"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "sierra-leonischer leone",
+            "sierra-leonische leone"
+          ]
+        }
+      },
+      {
+        "symbol": "Ssh",
+        "name": "Somali Shilling",
+        "symbol_native": "Ssh",
+        "code": "SOS",
+        "emoji": "🇸🇴",
+        "equal": [
+          "sos"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "самалійскі шылінг",
+            "самалійскіх шылінг"
+          ],
+          "de":[
+            "somalia schilling",
+            "somalia-schilling",
+            "somalische schilling",
+            "somalischer schilling"
+          ]
+        }
+      },
+      {
+        "symbol": "Sr$",
+        "name": "Surinamese Dollar",
+        "symbol_native": "$",
+        "code": "SRD",
+        "emoji": "🇸🇷",
+        "equal": [
+          "srd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "сурынамскіх долар"
+          ],
+          "de":
+          [
+            "suriname dollar",
+            "surinamischer dollar",
+            "surinamische dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "₡",
+        "name": "Salvadoran Colon",
+        "symbol_native": "₡",
+        "code": "SVC",
+        "emoji": "🇸🇻",
+        "equal": [
+          "svc"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "el-salvador-colón"
+          ]
+        }
+      },
+      {
+        "symbol": "SY£",
+        "name": "Syrian Pound",
+        "symbol_native": "ل.س.‏",
+        "code": "SYP",
+        "emoji": "🇸🇾",
+        "equal": [
+          "syp"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "сірыйскі фунт",
+            "сірыйскіх фунт"
+          ],
+          "de":[
+            "syrisches pfund",
+            "syrische pfund"
+          ]
+        }
+      },
+      {
+        "symbol": "L",
+        "name": "Swazi Lilangeni",
+        "symbol_native": "L‏",
+        "code": "SZL",
+        "emoji": "🇸🇿",
+        "equal": [
+          "szl"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "swazi lilangeni",
+            "lilangeni",
+            "emalangeni"
+          ]
+        }
+      },
+      {
+        "symbol": "฿",
+        "name": "Thai Baht",
+        "symbol_native": "฿",
+        "code": "THB",
+        "emoji": "🇹🇭",
+        "equal": [
+          "thb"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+        "de":[
+            "thailändischer baht",
+            "thailändische baht"
+          ]
+        }
+      },
+      {
+        "symbol": "ЅМ",
+        "name": "Tajikistani Somoni",
+        "symbol_native": "ЅМ",
+        "code": "TJS",
+        "emoji": "🇹🇭",
+        "equal": [
+          "tjs"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "таджыкскі самоні",
+            "самоні",
+            "таджыкскіх самоні"
+          ],
+          "de":[
+            "tadschikistan somoni",
+            "tadschikistan-somoni",
+            "tadschikistan somoni",
+            "tadschikistan-somoni",
+            "somoni"
+          ]
+        }
+      },
+      {
+        "symbol": "m",
+        "name": "Turkmenistani Manat",
+        "symbol_native": "",
+        "code": "TMT",
+        "emoji": "🇹🇲",
+        "equal": [
+          "tmt"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "туркменістанскі манат",
+            "туркменістанскіх манат"
+          ],
+          "de":[
+            "turkmenistan manat",
+            "turkmenistan-manat",
+            "turkmenistan manat",
+            "turkmenistan-manat",
+            "turkmenische manat",
+            "turkmenischer manat"
+          ]
+        }
+      },
+      {
+        "symbol": "DT",
+        "name": "Tunisian Dinar",
+        "symbol_native": "د.ت.‏",
+        "code": "TND",
+        "emoji": "🇹🇳",
+        "equal": [
+          "tnd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "туніскі дынар",
+            "туніскіх дынар"
+          ],
+          "de":[
+            "tunesischer dinar",
+            "tunesische dinar"
+          ]
+        }
+      },
+      {
+        "symbol": "T$",
+        "name": "Tongan Paʻanga",
+        "symbol_native": "T$",
+        "code": "TOP",
+        "emoji": "🇹🇴",
+        "equal": [
+          "top"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "pa'anga",
+            "tonga-dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "TL",
+        "name": "Turkish Lira",
+        "symbol_native": "TL",
+        "code": "TRY",
+        "emoji": "🇹🇷",
+        "equal": [
+          "try",
+          "₤"
+        ],
+        "entry": {
+          "en": [
+            "lira",
+            "turkish lira"
+          ],
+          "ru": [
+            "лир"
+          ],
+          "ua": [
+            "лір",
+            "турецька лір",
+            "турецьких лір",
+            "турецьої лір",
+            "турецькими лір",
+            "турецькі лір"
+          ],
+          "by": [
+            "лір",
+            "турэцкая лір",
+            "турэцкіх лір"
+          ],
+          "de":
+          [
+            "türkische lira",
+            "türkischer lira"
+          ]
+        }
+      },
+      {
+        "symbol": "TT$",
+        "name": "Trinidad and Tobago Dollar",
+        "symbol_native": "$",
+        "code": "TTD",
+        "emoji": "🇹🇹",
+        "equal": [
+          "ttd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "trinidad und tobago dollar"
+          ] 
+        }
+      },
+      {
+        "symbol": "NT$",
+        "name": "New Taiwan Dollar",
+        "symbol_native": "NT$",
+        "code": "TWD",
+        "emoji": "🇹🇼",
+        "equal": [
+          "twd",
+          "新臺幣",
+          "新台币"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "neue taiwan-dollar",
+            "taiwan-dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "TSh",
+        "name": "Tanzanian Shilling",
+        "symbol_native": "TSh",
+        "code": "TZS",
+        "emoji": "🇹🇿",
+        "equal": [
+          "tzs"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "танзанскі шылінг",
+            "танзанскіх шылінг"
+          ],
+          "de":[
+            "tansania schilling",
+            "tansania-schilling",
+            "tansanische schilling",
+            "tansanischer schilling"
+          ]
+        }
+      },
+      {
+        "symbol": "₴",
+        "name": "Ukrainian Hryvnia",
+        "symbol_native": "₴",
+        "code": "UAH",
+        "emoji": "🇺🇦",
+        "equal": [
+          "uah",
+          "грн",
+          "₴",
+          "hrn"
+        ],
+        "entry": {
+          "en": [
+            "hryvnia",
+            "hryvna",
+            "hryvnya"
+          ],
+          "ru": [
+            "гривн",
+            "гривен"
+          ],
+          "ua": [
+            "гривн",
+            "гривен",
+            "українська гривн",
+            "українських гривен",
+            "українськими гривн",
+            "української гривн",
+            "українські гривн"
+          ],
+          "by": [
+            "грыўн",
+            "украінская грыўн",
+            "украінскіх грыўн"
+          ],
+          "de":
+          [
+            "ukrainische hrywnja",
+            "ukrainischer hrywnja",
+            "hrywnja"
+          ]
+        }
+      },
+      {
+        "symbol": "USh",
+        "name": "Ugandan Shilling",
+        "symbol_native": "USh",
+        "code": "UGX",
+        "emoji": "🇺🇬",
+        "equal": [
+          "ugx"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "угандыйскі шылінг",
+            "угандыйскіх шылінг"
+          ],
+          "de":[
+            "uganda schilling",
+            "uganda-schilling",
+            "ugandischer schilling",
+            "ugandische schilling"
+          ]
+        }
+      },
+      {
+        "symbol": "$",
+        "name": "US Dollar",
+        "symbol_native": "$",
+        "code": "USD",
+        "emoji": "🇺🇸",
+        "equal": [
+          "usd",
+          "дол",
+          "$"
+        ],
+        "entry": {
+          "en": [
+            "buck",
+            "dollar",
+            "us dollar"
+          ],
+          "ru": [
+            "доллар",
+            "бакс",
+            "бачей",
+            "зелён",
+            "долар"
+          ],
+          "ua": [
+            "долар",
+            "доларів сша",
+            "американських долар",
+            "американського долар",
+            "американськими долар",
+            "дол сша"
+          ],
+          "by": [
+            "долар",
+            "даляр",
+            "амерыканскі долар",
+            "амерыканскіх долар"
+          ],
+          "de":
+          [
+            "us-dollar",
+            "us-dollar",
+            "dollar",
+            "amerikanische dollar",
+            "amerikanischer dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "$U",
+        "name": "Uruguayan Peso",
+        "symbol_native": "$",
+        "code": "UYU",
+        "emoji": "🇺🇾",
+        "equal": [
+          "uyu"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "уругвайскі песа",
+            "уругвайскіх песа"
+          ],
+          "de":[
+            "uruguayischer peso",
+            "uruguayische peso"
+          ]
+        }
+      },
+      {
+        "symbol": "UZS",
+        "name": "Uzbekistan Som",
+        "symbol_native": "UZS",
+        "code": "UZS",
+        "emoji": "🇺🇿",
+        "equal": [
+          "uzs",
+          "сум",
+          "som",
+          "сўм",
+          "сом"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            "сума",
+            "суму",
+            "сумо",
+            "сумы",
+            "сума"
+          ],
+          "ua": [
+            "узбецький сом",
+            "узбецьких сом",
+            "узбецького сом",
+            "узбецькими сом",
+            "узбецькі сом"
+          ],
+          "by": [
+            "узбекскі сом",
+            "узбекскіх сом"
+          ],
+          "de":
+          [
+            "usbekistan som",
+            "usbekistan-som",
+            "usbekistan som",
+            "usbekistan-som",
+            "usbekische som",
+            "usbekischer som",
+            "uzbekische so'm",
+            "uzbekischer so'm"
+          ]
+        }
+      },
+      {
+        "symbol": "Bs.F.",
+        "name": "Venezuelan Bolívar",
+        "symbol_native": "Bs.F.",
+        "code": "VEF",
+        "emoji": "🇻🇪",
+        "equal": [
+          "vef"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "венесуэльскі балівар",
+            "венесуэльскіх балівар"
+          ],
+          "de":[
+            "venezolanischer bolívar",
+            "venezolanische bolívar",
+            "venezolanische bolivar",
+            "venezolanischer bolivar"
+          ]
+        }
+      },
+      {
+        "symbol": "₫",
+        "name": "Vietnamese Dong",
+        "symbol_native": "₫",
+        "code": "VND",
+        "emoji": "🇻🇳",
+        "equal": [
+          "vnd",
+          "Đồng"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "донг"
+          ],
+          "de":[
+            "vietnamesischer dong",
+            "vietnamesische dong",
+            "dong"
+          ]
+        }
+      },
+      {
+        "symbol": "Vt",
+        "name": "Ni-Vanuatu Vatu",
+        "symbol_native": "Vt",
+        "code": "VUV",
+        "emoji": "🇻🇺",
+        "equal": [
+          "vuv"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+        "de":[
+            "vanuatu vatu"
+          ]
+        }
+      },
+      {
+        "symbol": "WS$",
+        "name": "Samoan Tala",
+        "symbol_native": "$",
+        "code": "WST",
+        "emoji": "🇼🇸",
+        "equal": [
+          "wst"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+        "de":[
+            "samoanischer tala",
+            "samoanische tala"
+          ]
+        }
+      },
+      {
+        "symbol": "FCFA",
+        "name": "CFA Franc BEAC",
+        "symbol_native": "FCFA",
+        "code": "XAF",
+        "emoji": "🇨🇫",
+        "equal": [
+          "xaf"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+        "de":[
+            "cfa-franc beac"
+          ]
+        }
+      },
+      {
+        "symbol": "",
+        "name": "Silver",
+        "symbol_native": "",
+        "code": "XAG",
+        "emoji": "🥈",
+        "equal": [
+          "xag"
+        ],
+        "entry": {
+          "en": [
+            "oz silver",
+            "ounces silver"
+          ],
+          "ru": [
+            "унция серебр",
+            "унции серебр",
+            "унций серебр",
+            "унциям серебр"
+          ],
+          "ua": [
+            "унція сріб",
+            "унції сріб",
+            "унціями сріб",
+            "унцій сріб"
+          ],
+          "by": [
+            "унцыя срэбр",
+            "унцыі срэбр",
+            "унцый срэбра"
+          ],
+          "de":[
+            "unze silber",
+            "unzen silber"
+          ]
+        }
+      },
+      {
+        "symbol": "",
+        "name": "Gold",
+        "symbol_native": "",
+        "code": "XAU",
+        "emoji": "🥇",
+        "equal": [
+          "xau"
+        ],
+        "entry": {
+          "en": [
+            "oz gold",
+            "ounces gold"
+          ],
+          "ru": [
+            "унция золот",
+            "унции золот",
+            "унций золот",
+            "унциям золот"
+          ],
+          "ua": [
+            "унція золот",
+            "унції золот",
+            "унцій золот",
+            "унціями золот"
+          ],
+          "by": [
+            "унцыя золат",
+            "унцыі золат",
+            "унцый золат"
+          ],
+          "de":[
+            "unze gold",
+            "unzen gold"
+          ]
+        }
+      },
+      {
+        "symbol": "$",
+        "name": "East Caribbean Dollar",
+        "symbol_native": "$",
+        "code": "XCD",
+        "emoji": "🇦🇬",
+        "equal": [
+          "xcd"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "усходнекарыбскі долар",
+            "усходнекарыбскіх долар"
+          ],
+          "de":[
+            "ostkaribischer dollar",
+            "ostkaribische dollar"
+          ]
+        }
+      },
+      {
+        "symbol": "CFA",
+        "name": "CFA Franc BCEAO",
+        "symbol_native": "CFA",
+        "code": "XOF",
+        "emoji": "🇨🇮",
+        "equal": [
+          "xof"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+        "de":[
+            "cfa-franc bceao"
+          ]
+        }
+      },
+      {
+        "symbol": "Fr",
+        "name": "CFP franc",
+        "symbol_native": "Fr",
+        "code": "XPF",
+        "emoji": "🇵🇫",
+        "equal": [
+          "xpf"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+        "de":[
+            "cfp-franc",
+            "pazifische franc"
+          ]
+        }
+      },
+      {
+        "symbol": "YR",
+        "name": "Yemeni Rial",
+        "symbol_native": "ر.ي.‏",
+        "code": "YER",
+        "emoji": "🇾🇪",
+        "equal": [
+          "yer"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            ""
+          ],
+          "de":[
+            "jemen rial",
+            "jemen-rial",
+            "jemenitische rial",
+            "jemenitischer rial"
+          ]
+        }
+      },
+      {
+        "symbol": "R",
+        "name": "South African Rand",
+        "symbol_native": "R",
+        "code": "ZAR",
+        "emoji": "🇿🇦",
+        "equal": [
+          "zar"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "ранд",
+            "рэнд"
+          ],
+          "de":[
+            "südafrikanischer rand",
+            "südafrikanische rand"
+          ]
+        }
+      },
+      {
+        "symbol": "ZK",
+        "name": "Zambian Kwacha",
+        "symbol_native": "ZK",
+        "code": "ZMW",
+        "emoji": "🇿🇲",
+        "equal": [
+          "zmw"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "замбійскі квача",
+            "замбійская квача",
+            "замбійскіх квач"
+          ],
+          "de":[
+            "sambischer kwacha",
+            "sambische kwacha"
+          ]
+        }
+      },
+      {
+        "symbol": "Z$",
+        "name": "Zimbabwean dollar",
+        "symbol_native": "$",
+        "code": "ZWL",
+        "emoji": "🇿🇼",
+        "equal": [
+          "zwl"
+        ],
+        "entry": {
+          "en": [
+            ""
+          ],
+          "ru": [
+            ""
+          ],
+          "ua": [
+            ""
+          ],
+          "by": [
+            "зімбабвійскі долар",
+            "зімбабвійскіх долар"
+          ],
+          "de":[
+            "simbabwe dollar",
+            "simbabwe-dollar"
+          ]
+        }
+      }
+    ]
+  }

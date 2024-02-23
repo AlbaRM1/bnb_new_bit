@@ -6,69 +6,9 @@ import json
 
 import httpx
 from httpx_socks import AsyncProxyTransport
-from currency_converter import CurrencyConverter
+from utils.value_to_eur import convert_to_eur
 
 from utils.netscape_to_json import base64CookieToJsonCookie
-
-c = CurrencyConverter()
-currency_symbols = {
-    '$': 'USD',
-    '€': 'EUR',
-    '£': 'GBP',
-    '¥': 'JPY',
-    '₹': 'INR',
-    '₴': 'UAH',
-    '₪': 'ILS',
-    '₸': 'KZT',
-    '₡': 'CRC',
-    '₦': 'NGN',
-    '฿': 'THB',
-    '₫': 'VND',
-    '֏': 'AMD',
-    'zł': 'PLN',
-    '₣': 'FRF',
-    '₢': 'BRB',
-    '¢': 'CRC',
-    '₤': 'ITL',
-    '₮': 'MNT',
-    '₾': 'GEL',
-    '؋': 'AFN',
-    '₺': 'TRY',
-    '₼': 'AZN',
-    '₱': 'PHP',
-    'Rp': 'IDR',
-    '₲': 'PYG',
-    '₥': 'MRO',
-    '₧': 'ESP',
-    '₨': 'LKR',
-    '₩': 'KRW',
-    '₭': 'LAK',
-    '₯': 'GRD',
-    '₰': 'XEU',
-    '₱': 'CUP',
-    '₲': 'UYU',
-    '₳': 'ARA',
-    '₵': 'GHS',
-    '₶': 'XFO',
-    '₷': 'GWE',
-    '₹': 'INR',
-    '₺': 'TRY',
-    '₼': 'AZN',
-    '₽': 'RUB',
-    '₾': 'GEL',
-    '₣': 'FRF',
-    '₴': 'UAH',
-    '₩': 'KPW',
-    '₫': 'VND',
-    'R$': 'BRL',
-    'RM': 'MYR',
-    'S/': 'PEN',
-    '₩': 'KRW',
-    '₨': 'LKR',
-    'Rs': 'LKR',
-    'kr':'SEK'
-}
-
 
 class AirbnbAccount:
     def __init__(self, cookie_file, proxy):
@@ -168,15 +108,7 @@ class AirbnbAccount:
                 if ',' in total_raw:
                     total_raw = total_raw.replace(',', '')
                 
-                total = re.findall(r'[\d\.\d]+', total_raw)[0]
-                symbol = total_raw.replace(total, '')
-
-                total = total.strip()
-                print(total)
-                
-                total = round(float(total), 2)
-                total = round(c.convert(total, currency_symbols[symbol]), 2)
-                print(total)
+                total = convert_to_eur(total_raw)
                 
                 thread_token = i['bessie_thread_id']
                 reserv_code = i['confirmation_code']
