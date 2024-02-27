@@ -6,3 +6,5 @@ python-dateutil
 CurrencyConverter
 sqlalchemy
 aiosqlite
+iso3166
+countryinfo

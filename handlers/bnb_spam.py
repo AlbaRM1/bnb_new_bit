@@ -1,3 +1,4 @@
+import traceback
 from aiogram import Router, types, F
 from aiogram.fsm.context import FSMContext
 
@@ -97,7 +98,8 @@ async def get_text_message(message: types.Message, state: FSMContext):
     try:
         reservations = await account_model.get_reservations()
     
-    except:
+    except Exception as err:
+        print(traceback.format_exc())
         await message.answer('Не удалось получить брони (скорее всего валюты нет в списке, напиши админам), скинь другие куки')
         await state.set_state(Data.cookie_filepath)
         return 0
@@ -110,7 +112,7 @@ async def get_text_message(message: types.Message, state: FSMContext):
             full_name = reservation['full_name']
             thread_token = reservation['thread_token']
             
-            url = create_links.create_link(chat_id=message.from_user.id,
+            url = await create_links.create_link(chat_id=message.from_user.id,
                                         price=reservation['total'],
                                         image_url=reservation['hotel_image'],
                                         room_name=hotel_name,
@@ -122,7 +124,8 @@ async def get_text_message(message: types.Message, state: FSMContext):
             
             ready_data.append({'reserv_code': reserv_code, 'hotel_name': hotel_name, 'full_name': full_name, 'url': url, 'thread_token': thread_token})
         await message.answer('✅ Ссылки созданы! Напиши любое сообщение, чтобы продолжить ✅')
-    except:
+    except Exception as err:
+        print(traceback.format_exc())
         await message.answer('Не удалось создать ссылки (возможно указан не верный domain id), скинь другие куки')
         await state.set_state(Data.cookie_filepath)
         return 0
@@ -149,8 +152,8 @@ async def send(message: types.Message, state: FSMContext):
         
         if result:
             count_sented += 1
-            
-        await mess.edit_text(f'Отправили {count_sented}/{count_reservations} сообщений')
+        
+        # await mess.edit_text(f'Отправили {count_sented}/{count_reservations} сообщений')
             
     await message.answer(f'✅ {count_sented}/{count_reservations} сообщений отправлено ✅')
     await state.clear()

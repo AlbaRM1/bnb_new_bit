@@ -18,13 +18,12 @@ from database.requests import get_user,\
                             del_proxy,\
                             get_texts,\
                             add_text,\
-                            del_text
+                            del_text, change_role
                             
 from keyboards.request_kb import get_request_kb
 from keyboards.adduser_kb import get_adduser_kb
 
 from keyboards.users.home import get_home_kb, view_domains_id, view_proxies, view_texts
-from keyboards.users.text_kb import get_texts_kb
 
 router = Router()
 router.message.filter(
@@ -51,16 +50,14 @@ class Data(StatesGroup):
 async def start(message: types.Message, state: FSMContext):
     result_check = await check_user(int(message.from_user.id))
     status = result_check['status']
-    
+    print(message.from_user.username)
+    # await change_role(message.from_user.id, 'admin')
+
     if status == 'ok':
         user = await get_user(message.from_user.id)
         kb = get_home_kb(user)
         
-        # texts = await get_texts(message.from_user.id)
-        # kb = get_texts_kb(texts)
-        
         await message.answer('Привет! давай начнём работу? ', reply_markup=kb)
-        await state.set_state(Data.proxy)
     elif status == 'request':
         await message.answer('Ты уже подал заявку, подожди пока админы её примут')
     else:

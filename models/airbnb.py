@@ -1,3 +1,4 @@
+import traceback
 import re
 import datetime
 from dateutil.relativedelta import relativedelta
@@ -48,16 +49,16 @@ class AirbnbAccount:
                 if '.airbnb.' in i['domain']:
                     if i['domain'][0] == '.':
                         domain = i['domain'][1:]
-                    # self.domain = domain
+                    self.domain = domain
 
-                self.session.cookies.set(i['name'], i['value'], '.airbnb.com', i['path'])
+                self.session.cookies.set(i['name'], i['value'], i['domain'], i['path'])
             except Exception as err:
-                print(err)
+                print(traceback.format_exc())
                 pass
 
     async def check_cookies(self):
         response = await self.session.get(f'https://{self.domain}/hosting')
-        if f'{self.domain}/hosting' in str(response.url):
+        if f'{self.domain}/hosting' in str(response.url) and response.status_code == 200:
             response_sha256 = await self.session.get('https://a0.muscache.com/airbnb/static/packages/web/en/7b37.529acabcc7.js')
             response_sha256 = response_sha256.text
             operationId = await self.session.get('https://a0.muscache.com/airbnb/static/packages/web/en/fe9c.8633f06885.js')
@@ -101,43 +102,45 @@ class AirbnbAccount:
             reservations_raw = response['reservations']
 
             for i in reservations_raw:
-                # c.convert
-                total_raw = i['earnings'].replace('\xa0', '')
-                print(total_raw)
-                
-                if ',' in total_raw:
-                    total_raw = total_raw.replace(',', '')
-                
-                total = convert_to_eur(total_raw)
-                
-                thread_token = i['bessie_thread_id']
-                reserv_code = i['confirmation_code']
-                start_date = i['start_date']
-                end_date = i['end_date']
-                hotel_id = i['listing_id']
-                hotel_name = i['listing_name']
-                hotel_image = i['listing_picture_url'].replace('?aki_policy=small', '')
-                full_name = i['guest_user']['full_name']
-
                 try:
-                    address = addresses[hotel_id]
-                except:
-                    response = await self.session.get(f'https://www.{self.domain}/api/v2/mys_bootstrap_data/{hotel_id}.json?section=details&locale=en&currency=USD')
-                    address = response.json()['reduxBootstrap']['listingDetails']['listingDetail']['full_address']
-                    addresses[hotel_id] = address
-                
-                reservations.append({'thread_token': thread_token,
-                                    'reserv_code': reserv_code, 
-                                    'start_date': start_date, 
-                                    'end_date': end_date, 
-                                    'hotel_id': hotel_id, 
-                                    'hotel_name': hotel_name, 
-                                    'hotel_image':hotel_image, 
-                                    'total':total, 
-                                    'address': address,
-                                    'full_name': full_name
-                                    })
+                    if i['host_calendar_reservation_status'] == 'STATUS_FUTURE':
+                    # c.convert
+                        total_raw = i['earnings'].replace('\xa0', '')
+                        print(total_raw)
+                        
+                        country = self.domain.split('.')[-1]
+                        total = await convert_to_eur(total_raw, country)
+                        print(total)
+                        
+                        thread_token = i['bessie_thread_id']
+                        reserv_code = i['confirmation_code']
+                        start_date = i['start_date']
+                        end_date = i['end_date']
+                        hotel_id = i['listing_id']
+                        hotel_name = i['listing_name']
+                        hotel_image = i['listing_picture_url'].replace('?aki_policy=small', '')
+                        full_name = i['guest_user']['full_name']
 
+                        try:
+                            address = addresses[hotel_id]
+                        except Exception as err:
+                            response = await self.session.get(f'https://www.{self.domain}/api/v2/mys_bootstrap_data/{hotel_id}.json?section=details&locale=en&currency=USD')
+                            address = response.json()['reduxBootstrap']['listingDetails']['listingDetail']['full_address']
+                            addresses[hotel_id] = address
+                        
+                        reservations.append({'thread_token': thread_token,
+                                            'reserv_code': reserv_code, 
+                                            'start_date': start_date, 
+                                            'end_date': end_date, 
+                                            'hotel_id': hotel_id, 
+                                            'hotel_name': hotel_name, 
+                                            'hotel_image':hotel_image, 
+                                            'total':total, 
+                                            'address': address,
+                                            'full_name': full_name
+                                            })
+                except:
+                    pass
             if len(reservations_raw) < 40:
                 break
 
