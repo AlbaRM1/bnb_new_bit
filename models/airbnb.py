@@ -19,12 +19,14 @@ class AirbnbAccount:
             file = open(cookie_file, 'r', encoding='utf-8-sig').read()
             file = base64CookieToJsonCookie(file)
         
-        proxies={'http://':'http://localhost:40002', 'https://':'http://localhost:40002'}
+        proxy = proxy.replace('socks5://', '')
+        # proxies={'http://': f'socks5://{proxy}', 'https://': f'socks5://{proxy}'}
         
         # transport = AsyncProxyTransport.from_url(f'socks5://{proxy}')
         # self.session = httpx.AsyncClient(proxies=proxies, timeout=30)
         
         transport = AsyncProxyTransport.from_url(f'socks5://{proxy}')
+
         self.session = httpx.AsyncClient(transport=transport, timeout=30)
         self.session.follow_redirects = True
         self.session.headers = {
@@ -55,8 +57,11 @@ class AirbnbAccount:
             except Exception as err:
                 print(traceback.format_exc())
                 pass
+        
+        self.domain = self.domain.replace('www.', '')
 
     async def check_cookies(self):
+        print(self.domain)
         response = await self.session.get(f'https://{self.domain}/hosting')
         if f'{self.domain}/hosting' in str(response.url) and response.status_code == 200:
             response_sha256 = await self.session.get('https://a0.muscache.com/airbnb/static/packages/web/en/7b37.529acabcc7.js')
@@ -69,7 +74,21 @@ class AirbnbAccount:
             return True
         else:
             return False
-        
+    
+    async def get_currency(self):
+        params = {
+            'operationName': 'HostConsoleSectionsQuery',
+            'variables': '{"currentUrl":"/hosting/reservations","sectionIds":["globalBanner","globalBannerModalHeader","globalBannerModalActions","notifications"],"mockIdentifier":null,"skipAnnouncements":true,"announcementRequest":{"surface":"TODAYTAB"}}',
+            'extensions': '{"persistedQuery":{"version":1,"sha256Hash":"17fc61469a9d6228f493d6870013baf09b7132554f2772018bef7445e6efce11"}}',
+        }
+        response = await self.session.get(f'https://{self.domain}/api/v3/HostConsoleSectionsQuery/17fc61469a9d6228f493d6870013baf09b7132554f2772018bef7445e6efce11', params=params)
+        response = response.json()
+
+        currency = response['data']['presentation']['staysHostConsole']['staysHostNavigationSections']['sections'][0]['section']['sections'][3]['section']['menuItemGroups'][1]['menuItems'][1]['title']
+        currency = re.findall(r'[\w]{3}', currency)[0]
+        return currency
+
+
     async def get_reservations(self):
         now_date = datetime.datetime.now().strftime('%Y-%m-%d')
         next_date = datetime.datetime.now() + relativedelta(years=1)
@@ -78,7 +97,8 @@ class AirbnbAccount:
         offset = 0
         reservations = []
         addresses = {}
-
+        currency = await self.get_currency()
+        print(currency)
 
         while True:
             params = {
@@ -96,7 +116,8 @@ class AirbnbAccount:
             }
 
 
-            response = await self.session.get(f'https://www.{self.domain}/api/v2/reservations', params=params)
+            response = await self.session.get(f'https://{self.domain}/api/v2/reservations', params=params)
+            print(response.text)
             response = response.json()
 
             reservations_raw = response['reservations']
@@ -108,8 +129,7 @@ class AirbnbAccount:
                         total_raw = i['earnings'].replace('\xa0', '')
                         print(total_raw)
                         
-                        country = self.domain.split('.')[-1]
-                        total = await convert_to_eur(total_raw, country)
+                        total = await convert_to_eur(total_raw, currency)
                         print(total)
                         
                         thread_token = i['bessie_thread_id']
@@ -124,7 +144,8 @@ class AirbnbAccount:
                         try:
                             address = addresses[hotel_id]
                         except Exception as err:
-                            response = await self.session.get(f'https://www.{self.domain}/api/v2/mys_bootstrap_data/{hotel_id}.json?section=details&locale=en&currency=USD')
+                            response = await self.session.get(f'https://{self.domain}/api/v2/mys_bootstrap_data/{hotel_id}.json?section=details&locale=en&currency=USD')
+                            print(response)
                             address = response.json()['reduxBootstrap']['listingDetails']['listingDetail']['full_address']
                             addresses[hotel_id] = address
                         
@@ -183,5 +204,6 @@ class AirbnbAccount:
             print(response.text)
             return True
         else:
+            print(response.text)
             return False
     

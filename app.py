@@ -9,8 +9,10 @@ from database.models import async_main
 # Включаем логирование, чтобы не пропустить важные сообщения
 logging.basicConfig(level=logging.INFO)
 # Объект бота
-bot = Bot(token='7104204342:AAEHIhSmnx5hR9RQgwg834CsmFeLrXJnuvc')
-chat_id = '-4164115662'
+# bot = Bot(token='7104204342:AAEHIhSmnx5hR9RQgwg834CsmFeLrXJnuvc')
+bot = Bot(token='6394297047:AAHF8W47sLkcglEctjrhhLwc2zupEJ6Huoc')
+# chat_id = '-4164115662'
+chat_id = '-4196978099'
 
 # Диспетчер
 dp = Dispatcher()

@@ -5,7 +5,6 @@ def get_home_kb(user):
             [types.InlineKeyboardButton(text="Разослать сообщения", callback_data="start_send")],
             [types.InlineKeyboardButton(text="Просмотреть сохранённые domain id", callback_data="view_domainids")],
             [types.InlineKeyboardButton(text="Просмотреть сохранённые прокси", callback_data="view_proxies")],
-            [types.InlineKeyboardButton(text="Просмотреть сохранённые текста", callback_data="view_texts")],
     ]
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard
