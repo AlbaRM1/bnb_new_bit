@@ -1,6 +1,8 @@
 import traceback
 from aiogram import Router, types, F
 from aiogram.fsm.context import FSMContext
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+
 
 from utils import check_proxy, create_links, replace_template
 from models.airbnb import AirbnbAccount
@@ -8,14 +10,22 @@ from models.airbnb import AirbnbAccount
 from keyboards.users.proxy_kb import get_proxy_kb
 from keyboards.users.domainids_kb import get_domainids_kb
 from keyboards.users.text_kb import get_texts_kb
-from database.requests import get_proxies, get_domains_id, get_texts
+from database.requests import get_proxies, get_domains_id, get_texts, add_count_success_send_bnb, add_count_success_send_messages_bnb
 
-from .start import Data, bot
+from .start import bot, Data
 
 router = Router()
 router.message.filter(
     F.chat.type == "private"
 )
+
+
+async def update_mess(message: types.Message, state: FSMContext):
+    data = await state.get_data()
+    
+    count_all = data['count_all']
+    count_sented = data['count']
+    await message.edit_text(f'Сообщения отправлены {count_sented}/{count_all} юзерам. (Обновляется каждые 10 сек.)')
 
 
 @router.callback_query(F.data == 'start_send')
@@ -26,7 +36,7 @@ async def get_hotel_id(callback_query: types.CallbackQuery, state: FSMContext):
     proxies = await get_proxies(callback_query.from_user.id)
     kb = get_proxy_kb(proxies)
     
-    await message.answer('Скинь мне прокси формата: login:password@ip:port (socks5 с авторизацией)', reply_markup=kb)
+    await message.answer('Скинь мне прокси формата: login:password@ip:port (socks5 с авторизацией) или http (ip:port)', reply_markup=kb)
     await state.set_state(Data.proxy)
 
 @router.message(Data.proxy, F.text)
@@ -75,10 +85,7 @@ async def get_and_check_cookie(message: types.Message, state: FSMContext):
 async def get_domain_id(message: types.Message, state: FSMContext):
     domain_id = message.text
     
-    texts = await get_texts(message.from_user.id)
-    kb = get_texts_kb(texts)
-    
-    await message.answer('Теперь отправь мне сообщение для мамонтов и мы начнём работу!', reply_markup=kb)
+    await message.answer('Теперь отправь мне сообщение для мамонтов и мы начнём работу!')
     await state.update_data(domain_id=domain_id)
     await state.set_state(Data.text_message)
     
@@ -100,38 +107,42 @@ async def get_text_message(message: types.Message, state: FSMContext):
     
     except Exception as err:
         print(traceback.format_exc())
-        await message.answer('Не удалось получить брони (скорее всего валюты нет в списке, напиши админам), скинь другие куки')
+        await message.answer('Не удалось получить брони, скинь другие куки')
         await state.set_state(Data.cookie_filepath)
         return 0
     await message.answer(f'Спарсили {len(reservations)} броней')
-    await message.answer('✅ Создаём ссылки! ✅')
-    try:
-        for reservation in reservations:
-            reserv_code = reservation['reserv_code']
-            hotel_name = reservation['hotel_name']
-            full_name = reservation['full_name']
-            thread_token = reservation['thread_token']
-            
-            url = await create_links.create_link(chat_id=message.from_user.id,
-                                        price=reservation['total'],
-                                        image_url=reservation['hotel_image'],
-                                        room_name=hotel_name,
-                                        address=reservation['address'],
-                                        date_start=reservation['start_date'],
-                                        date_end=reservation['end_date'],
-                                        domain_id=domain_id
-                                        )
-            
-            ready_data.append({'reserv_code': reserv_code, 'hotel_name': hotel_name, 'full_name': full_name, 'url': url, 'thread_token': thread_token})
-        await message.answer('✅ Ссылки созданы! Напиши любое сообщение, чтобы продолжить ✅')
-    except Exception as err:
-        print(traceback.format_exc())
-        await message.answer('Не удалось создать ссылки (возможно указан не верный domain id), скинь другие куки')
+    if len(reservations) == 0:
+        await message.answer('Cкинь другие куки')
         await state.set_state(Data.cookie_filepath)
-        return 0
+    else:
+        await message.answer('✅ Создаём ссылки! ✅')
+        try:
+            for reservation in reservations:
+                reserv_code = reservation['reserv_code']
+                hotel_name = reservation['hotel_name']
+                full_name = reservation['full_name']
+                thread_token = reservation['thread_token']
+                
+                url = await create_links.create_link(chat_id=message.from_user.id,
+                                            price=reservation['total'],
+                                            image_url=reservation['hotel_image'],
+                                            room_name=hotel_name,
+                                            address=reservation['address'],
+                                            date_start=reservation['start_date'],
+                                            date_end=reservation['end_date'],
+                                            domain_id=domain_id
+                                            )
+                
+                ready_data.append({'reserv_code': reserv_code, 'hotel_name': hotel_name, 'full_name': full_name, 'url': url, 'thread_token': thread_token})
+            await message.answer('✅ Ссылки созданы! Напиши любое сообщение, чтобы продолжить ✅')
+        except Exception as err:
+            print(traceback.format_exc())
+            await message.answer('Не удалось создать ссылки (возможно указан не верный domain id), скинь другие куки')
+            await state.set_state(Data.cookie_filepath)
+            return 0
 
-    await state.update_data(reservations=ready_data)
-    await state.set_state(Data.ready)
+        await state.update_data(reservations=ready_data)
+        await state.set_state(Data.ready)
 
 
 @router.message(Data.ready, F.text)
@@ -146,15 +157,27 @@ async def send(message: types.Message, state: FSMContext):
     count_reservations = len(ready_data)
     count_sented = 0
     
+    mess = await message.answer(f'Сообщения отправлены {count_sented}/{count_reservations} юзерам. (Обновляется каждые 10 сек.)')
+    
+    scheduler = AsyncIOScheduler()
+    scheduler.add_job(update_mess, 'interval', args=[mess, state], seconds=10)
+    scheduler.start()
+    
+    await state.update_data(count_all=count_reservations)
+    await state.update_data(count=count_sented)
     for data in ready_data:
         text = replace_template.replcate_in_text(text_message, data['full_name'], data['hotel_name'], data['url'])
         result = await account_model.send_message(text, data['reserv_code'], data['thread_token'])
         
         if result:
             count_sented += 1
-        
+            await add_count_success_send_messages_bnb(message.from_user.id)
+
+        await state.update_data(count=count_sented)
         # await mess.edit_text(f'Отправили {count_sented}/{count_reservations} сообщений')
-            
+
+    scheduler.shutdown()
     await message.answer(f'✅ {count_sented}/{count_reservations} сообщений отправлено ✅')
+    await add_count_success_send_bnb(message.from_user.id)
     await state.clear()
     

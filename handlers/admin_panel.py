@@ -4,10 +4,11 @@ from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-from database.requests import check_role, get_users, add_user, del_user, del_user_request, change_role
+from database.requests import check_role, clear_all_statistic, get_all_statistic, get_users, add_user, del_user, del_user_request, change_role
 from keyboards.admin_kb import get_admin_kb
 from keyboards.select_change_role import get_changerole_users
 from keyboards.deleteuser_kb import get_delete_user_kb
+from keyboards.clear_statistic import get_clear_statistic_kb
 
 from .bnb_spam import bot
 
@@ -35,7 +36,28 @@ async def view_users(callback_query: types.CallbackQuery):
         text += f'Тэг: @{i.tg_tag} ID: {i.tg_id} Роль: {i.role}\n-------------\n'
         
     await callback_query.message.edit_text(text)
+
+
+@router.callback_query(F.data == 'view_statistics')
+async def view_statistics(callback_query: types.CallbackQuery):
+    statistics = await get_all_statistic()
+    kb = get_clear_statistic_kb()
+    
+    text = 'Статистика юзеров:\n'
+    for i in statistics:
+        tag = i['user']
+        count_send_book = i['count_success_send_book']
+        count_send_bnb = i['count_success_send_bnb']
         
+        text += f'Тэг: @{tag}\nКол-во хостов бук: {count_send_book}\nКол-во хостов бнб: {count_send_bnb} \n-------------\n'
+        
+    await callback_query.message.edit_text(text, reply_markup=kb)
+
+
+@router.callback_query(F.data == 'clear_statistic')
+async def clear_statistic(callback_query: types.CallbackQuery):
+    await clear_all_statistic()
+    await callback_query.message.edit_text('Статистика очищена!')
 
 @router.callback_query(F.data.startswith('adduser___'))
 async def add_user_tg(callback_query: types.CallbackQuery):

@@ -5,28 +5,26 @@ from iso3166 import countries
 from countryinfo import CountryInfo
 
 
-async def convert_to_eur(value, currency):    
-    total_raw = value.replace('\xa0', '')
+async def convert_to_eur(value, symbol_name):    
+    total_raw = str(value).replace('\xa0', '')
     print(total_raw)
     
-    if ',' in total_raw:
-        total_raw = total_raw.replace(',', '')
+    total = value
 
-    total = re.findall(r'[\d\.\d]+', total_raw)
-    if total[0] == '.':
-        total = total[1]
-    else:
-        total = total[0]
+    if type(value) == str:
+        if ',' in total_raw:
+            total_raw = total_raw.replace(',', '')
 
-
-    symbol = total_raw.replace(total, '')
-    print(symbol)
-    
-    total = total.strip()    
-    total = round(float(total), 2)
-    
-    symbol_name = currency
-
+        total = re.findall(r'[\d\.\d]+', total_raw)
+        if total[0] == '.':
+            total = total[1]
+        else:
+            total = total[0]
+        symbol = total_raw.replace(total, '')
+        print(symbol)
+        
+        total = total.strip()    
+        total = round(float(total), 2)
     
     async with httpx.AsyncClient(timeout=60) as client:
         response_json = await client.get(f'https://open.er-api.com/v6/latest/{symbol_name}')

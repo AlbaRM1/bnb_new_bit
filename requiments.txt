@@ -1,10 +1,8 @@
-httpx
+httpx[socks]
 aiogram
 pydantic_settings
 httpx_socks
 python-dateutil
-CurrencyConverter
 sqlalchemy
 aiosqlite
-iso3166
-countryinfo
+apscheduler

@@ -3,7 +3,7 @@ from aiogram.filters.command import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-from app import bot, chat_id
+from app import bot, chat_id, scheduler
 from utils import check_proxy, create_links, replace_template
 from models.airbnb import AirbnbAccount
 
@@ -44,6 +44,9 @@ class Data(StatesGroup):
     domain_id_add = State()
     proxy_add = State()
     text_message_add = State()
+    
+    count_all = State()
+    count = State()
 
 
 @router.message(Command("start"))

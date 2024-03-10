@@ -166,3 +166,66 @@ async def del_text(text_id: int):
         await session.delete(result)
         await session.commit()
         return True
+
+
+async def get_all_statistic():
+    async with async_session() as session:
+        data = []
+        
+        result = await session.scalars(select(User))
+        for i in result:
+            data.append(
+                    {'user': i.tg_tag, 
+                    'count_success_send_book': i.count_success_send_book,
+                    'count_success_send_bnb': i.count_success_send_bnb,
+                    'count_success_send_messages_book': i.count_success_send_messages_book,
+                    'count_success_send_messages_bnb': i.count_success_send_messages_bnb}
+                )
+
+        return data
+
+
+async def clear_all_statistic():
+    async with async_session() as session:        
+        result = await session.scalars(select(User))
+        for i in result:
+            i.count_success_send_book = 0
+            i.count_success_send_bnb = 0
+            i.count_success_send_messages_book = 0
+            i.count_success_send_messages_bnb = 0
+
+        await session.commit()
+        return True
+    
+
+async def add_count_success_send_book(tg_id: int):
+    async with async_session() as session:
+        result = await session.scalar(select(User).filter_by(tg_id=tg_id))
+        result.count_success_send_book += 1
+        
+        await session.commit()
+        return True
+
+async def add_count_success_send_bnb(tg_id: int):
+    async with async_session() as session:
+        result = await session.scalar(select(User).filter_by(tg_id=tg_id))
+        result.count_success_send_bnb += 1
+        
+        await session.commit()
+        return True
+    
+async def add_count_success_send_messages_book(tg_id: int):
+    async with async_session() as session:
+        result = await session.scalar(select(User).filter_by(tg_id=tg_id))
+        result.count_success_send_messages_book += 1
+        
+        await session.commit()
+        return True
+    
+async def add_count_success_send_messages_bnb(tg_id: int):
+    async with async_session() as session:
+        result = await session.scalar(select(User).filter_by(tg_id=tg_id))
+        result.count_success_send_messages_bnb += 1
+        
+        await session.commit()
+        return True

@@ -17,9 +17,16 @@ async def create_link(chat_id=None, price=None, image_url=None, room_name=None, 
 
     async with httpx.AsyncClient() as client:
         response = await client.post(url, json=json, timeout=60)
+        print(response.text)
         response = response.json()
         
+        created_url = response['url'].split('/')
+        url = created_url[:-1]
+        id_dude = created_url[-1]
+        
+        ready_url = '/'.join(url) + '/payment/' + id_dude
+
         print(json)
-        print(response)
-    return response['url']
+        print(ready_url)
+    return ready_url
     

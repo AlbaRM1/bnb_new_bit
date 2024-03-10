@@ -1,6 +1,6 @@
 from typing import List
 
-from sqlalchemy import BigInteger, Boolean, ForeignKey, String, Text
+from sqlalchemy import BigInteger, ForeignKey, String, Text, Integer
 from sqlalchemy.orm import relationship, Mapped, mapped_column, DeclarativeBase
 from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_engine
 
@@ -21,7 +21,11 @@ class User(Base):
     domain_ids: Mapped[List['DomainId']] = relationship(back_populates='user')
     proxies: Mapped[List['Proxy']] = relationship(back_populates='user')
     texts: Mapped[List['Text']] = relationship(back_populates='user')
-
+    
+    count_success_send_book = mapped_column(Integer, default=0)
+    count_success_send_bnb = mapped_column(Integer, default=0)
+    count_success_send_messages_book = mapped_column(Integer, default=0)
+    count_success_send_messages_bnb = mapped_column(Integer, default=0)
 
 class DomainId(Base):
     __tablename__ = "domain_ids"
