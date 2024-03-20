@@ -8,7 +8,7 @@ from database.requests import check_role, clear_all_statistic, get_all_statistic
 from keyboards.admin_kb import get_admin_kb
 from keyboards.select_change_role import get_changerole_users
 from keyboards.deleteuser_kb import get_delete_user_kb
-from keyboards.clear_statistic import get_clear_statistic_kb
+from keyboards.list_kb import get_list_kb
 
 from .bnb_spam import bot
 
@@ -41,7 +41,55 @@ async def view_users(callback_query: types.CallbackQuery):
 @router.callback_query(F.data == 'view_statistics')
 async def view_statistics(callback_query: types.CallbackQuery):
     statistics = await get_all_statistic()
-    kb = get_clear_statistic_kb()
+    kb = get_list_kb(0)
+    
+    statistics = statistics[0:10]
+    
+    text = 'Статистика юзеров:\n'
+    for i in statistics:
+        tag = i['user']
+        count_send_book = i['count_success_send_book']
+        count_send_bnb = i['count_success_send_bnb']
+        
+        text += f'Тэг: @{tag}\nКол-во хостов бук: {count_send_book}\nКол-во хостов бнб: {count_send_bnb} \n-------------\n'
+        
+    await callback_query.message.edit_text(text, reply_markup=kb)
+
+
+@router.callback_query(F.data.startswith('list__next__'))
+async def next_page(callback_query: types.CallbackQuery):
+    print(callback_query.data)
+    _, __, next_page = callback_query.data.split('__')
+    
+    next_page = int(next_page)
+    
+    statistics = await get_all_statistic()
+    kb = get_list_kb(next_page)
+    
+    statistics = statistics[next_page:next_page+10]
+    
+    text = 'Статистика юзеров:\n'
+    for i in statistics:
+        tag = i['user']
+        count_send_book = i['count_success_send_book']
+        count_send_bnb = i['count_success_send_bnb']
+        
+        text += f'Тэг: @{tag}\nКол-во хостов бук: {count_send_book}\nКол-во хостов бнб: {count_send_bnb} \n-------------\n'
+        
+    await callback_query.message.edit_text(text, reply_markup=kb)
+
+
+@router.callback_query(F.data.startswith('list__pre__'))
+async def prev_page(callback_query: types.CallbackQuery):
+    print(callback_query.data)
+    _, __, pre_page = callback_query.data.split('__')
+    
+    pre_page = int(pre_page)
+    
+    statistics = await get_all_statistic()
+    kb = get_list_kb(pre_page)
+    
+    statistics = statistics[pre_page-10:pre_page]
     
     text = 'Статистика юзеров:\n'
     for i in statistics:

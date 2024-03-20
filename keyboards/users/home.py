@@ -5,6 +5,8 @@ def get_home_kb(user):
             [types.InlineKeyboardButton(text="Разослать сообщения AIRBNB", callback_data="start_send")],
             [types.InlineKeyboardButton(text="Разослать сообщения BOOKING (pia. Ждать админов)", callback_data="start_send_book_pia")],
             [types.InlineKeyboardButton(text="Разослать сообщения BOOKING (socks. Сразу слать)", callback_data="start_send_book_socks")],
+            [types.InlineKeyboardButton(text="Разослать сообщения AGODA (socks. Сразу слать)", callback_data="start_send_adoga")],
+            # [types.InlineKeyboardButton(text="Разослать сообщения BOOKING (pulse. Прокси не нужны)", callback_data="start_send_book_pulse")],
             [types.InlineKeyboardButton(text="Просмотреть сохранённые domain id", callback_data="view_domainids")],
             [types.InlineKeyboardButton(text="Просмотреть сохранённые прокси", callback_data="view_proxies")],
     ]

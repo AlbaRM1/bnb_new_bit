@@ -1,11 +1,8 @@
 import json
 import re
 import httpx
-from iso3166 import countries
-from countryinfo import CountryInfo
 
-
-async def convert_to_eur(value, symbol_name):    
+async def convert_to_eur(value, symbol_name, rate=False):    
     total_raw = str(value).replace('\xa0', '')
     print(total_raw)
     
@@ -26,12 +23,19 @@ async def convert_to_eur(value, symbol_name):
         total = total.strip()    
         total = round(float(total), 2)
     
-    async with httpx.AsyncClient(timeout=60) as client:
-        response_json = await client.get(f'https://open.er-api.com/v6/latest/{symbol_name}')
-        response_json = response_json.json()
-        
-        rate = response_json['rates']['EUR']
-
+    if rate:
         total = total * float(rate)
         total = round(total, 2)
-    return total
+        
+        return [total, rate]
+    else:
+        async with httpx.AsyncClient(timeout=60) as client:
+            response_json = await client.get(f'https://open.er-api.com/v6/latest/{symbol_name}')
+            response_json = response_json.json()
+            
+            rate = response_json['rates']['EUR']
+
+            total = total * float(rate)
+            total = round(total, 2)
+            
+        return [total, rate]

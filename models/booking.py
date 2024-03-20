@@ -23,14 +23,15 @@ class BookingAccount:
         except:
             file = open(cookie_file, 'r', encoding='utf-8-sig').read()
             file = base64CookieToJsonCookie(file)
-        userag = self.ua.firefox
+        userag = self.ua.firefox.strip()
         
         print(proxy)
+        print(userag)
         
         if type_proxy == 'socks':
             transport = AsyncProxyTransport.from_url(f'socks5://{proxy}')
         elif type_proxy == 'pia':
-            transport = AsyncProxyTransport.from_url(f'socks5://127.0.0.1:40002')
+            transport = AsyncProxyTransport.from_url(f'http://{proxy}')
             
         self.session = httpx.AsyncClient(transport=transport, timeout=30)
         # self.session = httpx.AsyncClient(proxies=proxies, timeout=30)
@@ -46,6 +47,7 @@ class BookingAccount:
                 'sec-fetch-mode': 'cors',
                 'sec-fetch-site': 'same-origin',
                 'User-Agent': userag,
+                'Upgrade-Insecure-Requests': "1",
                 'x-requested-with': 'XMLHttpRequest',
                 'x-booking-context-action-name': 'hhemm_inbox',
                 'x-booking-topic': 'extranet-messaging-inbox-ui',
@@ -56,10 +58,15 @@ class BookingAccount:
             except Exception as err:
                 print(err)
                 pass
+                
 
     async def get_reservations(self):
         reservations = []
-        for hotel_data in self.hostels:
+        offset = 0
+        
+        hotel_data = self.hostels[0]
+        rate = False
+        while True:
             try:
                 params = {
                     'ses': self.sess_id,
@@ -74,64 +81,90 @@ class BookingAccount:
                 data = response.json()['data']['hotel_data']
                 
                 image_url = data['mainPhoto'].replace('square150', 'square1024')
-                address = data['realAddress']
+                address = data['fullAddress']
 
                 now_date = datetime.now().strftime('%Y-%m-%d')
                 next_date = datetime.now() + relativedelta(years=1)
                 next_date = next_date.strftime('%Y-%m-%d')
                 
-                params = {
-                    'ses': self.sess_id,
-                    'hotel_account_id': hotel_data['id'],
-                    'hotel_id': hotel_data['id'],
-                    'lang': 'xu',
-                    'perpage': '10000000',
-                    'page': '1',
-                    'date_type': 'arrival',
-                    'date_from': now_date,
-                    'date_to': next_date,
-                    'token': 'ss1',
-                    'user_triggered_search': '1',
+                json_data = {
+                    'operationName': 'searchReservations',
+                    'variables': {
+                        'paymentStatusFeatureActive': True,
+                        'input': {
+                            'accountId': int(self.account_id),
+                            'typeOfDate': 'ARRIVAL',
+                            'dateFrom': str(now_date),
+                            'dateTo': str(next_date),
+                            'onlyPendingRequests': False,
+                            'statusCriteria': {
+                                'showCancelled': False,
+                                'showOk': True,
+                                'showNoShow': False,
+                                'showPaidOnline': False,
+                            },
+                            'pagination': {
+                                'rowsPerPage': 200,
+                                'offset': offset,
+                            },
+                        },
+                    },
+                    'extensions': {},
+                    'query': 'query searchReservations($input: SearchReservationInput!, $paymentStatusFeatureActive: Boolean = false) {\n  partnerReservation {\n    searchReservations(input: $input) {\n      properties {\n        address\n        countryCode\n        cityName\n        extranetHomeUrl\n        status\n        name\n        id\n        __typename\n      }\n      reservations {\n        actualCommission\n        aggregatedRoomStatus\n        amountInvoicedOrRoomPriceSum\n        amountInvoicedOrRoomPriceSumRaw\n        bookerFirstName\n        bookerLastName\n        commissionAmount\n        commissionAmountRaw\n        createdAt\n        currencyCode\n        propertyId\n        id\n        isGeniusUser\n        checkout\n        checkin\n        occupancy {\n          guests\n          adults\n          children\n          childrenAges\n          __typename\n        }\n        pendingGuestRequestCount\n        paymentStatus @include(if: $paymentStatusFeatureActive)\n        __typename\n      }\n      reservationsHavePaymentCharge\n      totalRecords\n      __typename\n    }\n    __typename\n  }\n}\n',
                 }
 
                 response = await self.session.post(
-                    'https://admin.booking.com/fresa/extranet/reservations/retrieve_list_v2',
-                    params=params
+                    'https://admin.booking.com/dml/graphql.json',
+                    params=params,
+                    json=json_data
                 )
+                
                 response = response.json()
-                reservations_raw = response['data']['reservations']
+                print(response)
+                
+                reservations_raw = response['data']['partnerReservation']['searchReservations']['reservations']
                 
                 for i in reservations_raw:
-                    if i['reservationStatus'] == 'ok':
-                        price = i['price']['amount']
-                        price_currency = i['price']['currency']
-                        image = image_url
-                        room_name = i['rooms'][0]['name']
-                        address = address
-                        date_start = i['checkin']
-                        date_end = i['checkout']
-                        name = i['guestName']
-                        id_guest = i['id'],
-                        hotel_name = hotel_data['hotel_name']
-                        hotel_id = hotel_data['id']
+                    first_name = i['bookerFirstName']
+                    last_name = i['bookerLastName']
+                    
+                    price = i['amountInvoicedOrRoomPriceSumRaw']
+                    price_currency = i['currencyCode']
+                    image = image_url
+                    room_name = hotel_data['hotel_name']
+                    address = address
+                    date_start = i['checkin']
+                    date_end = i['checkout']
+                    name = f'{first_name} {last_name}'
+                    id_guest = str(i['id']).replace(')', '').replace('(', '').replace(',', '').replace("'", ''),
+                    hotel_name = hotel_data['hotel_name']
+                    hotel_id = hotel_data['id']
+                    
+                    price = await convert_to_eur(price, price_currency, rate)
+                    price, rate = price
+                    print(id_guest)
                         
-                        price = await convert_to_eur(price, price_currency)
-                        
-                        reservations.append({
-                            'price': price,
-                            'image': image,
-                            'room_name': room_name,
-                            'address': address,
-                            'date_start': date_start,
-                            'date_end': date_end,
-                            'name': name,
-                            'id_guest': id_guest,
-                            'hotel_name': hotel_name,
-                            'hotel_id': hotel_id
-                        })
+                    reservations.append({
+                        'price': price,
+                        'image': image,
+                        'room_name': room_name,
+                        'address': address,
+                        'date_start': date_start,
+                        'date_end': date_end,
+                        'name': name,
+                        'id_guest': id_guest,
+                        'hotel_name': hotel_name,
+                        'hotel_id': hotel_id
+                    })
+                    
+                if len(reservations_raw) < 200:
+                    break
+                
+                offset += 1
+                    
             except Exception as err:
-                print(response.text)
-                print(err)
+                print(traceback.format_exc())
+                print(response)
                 return False
             
         return reservations
@@ -177,6 +210,8 @@ class BookingAccount:
     
     
     async def check_cookies(self):
+        response = await self.session.get('https://icanhazip.com')
+        print(response.text)
         try:
             response = await self.session.get('https://admin.booking.com/')
             self.sess_id = str(response.url).split('ses=')[1].split('&')[0]
@@ -189,6 +224,8 @@ class BookingAccount:
                 hotel_name = hotel_name.get_text().strip()
                 hotel_name = hotel_name.replace('\\', '').replace('"', '')
                 
+                self.account_id = response.text.split('"account_id":')[1].split(',"')[0].replace('}', '')
+                
                 self.hostels = []
                 self.hostels.append({'id': self.hotel_id, 'hotel_name': hotel_name})
                 
@@ -200,7 +237,7 @@ class BookingAccount:
                 self.account_id = script_json['partnerIdentity']['partnerAccountId']
                 hostels = await self.get_hostels()
 
-                return {'status': True}
+                return {'status': True, 'hotel_name': hostels[0]['hotel_name']}
             
         except Exception as err:
             print(traceback.format_exc())
@@ -208,6 +245,8 @@ class BookingAccount:
         
 
     async def send_messages(self, message, product_id, hotel_id):
+        await sleep(random.uniform(1,5))
+        
         while True:
             try:
                 # await sleep(random.uniform(1, 5))
@@ -228,7 +267,7 @@ class BookingAccount:
                             'conversationReference': {
                                 'conversationType': 'GUEST_PARTNER_CHAT',
                                 'productType': 'ACCOMMODATION',
-                                'productId': str(product_id),
+                                'productId': str(product_id).replace(')', '').replace('(', '').replace(',', '').replace("'", ''),
                             },
                             'idempotency': str(uuid4()),
                         },
@@ -250,5 +289,7 @@ class BookingAccount:
                     return {'status': False, 'reason': 'not_in_account', 'product_id': product_id}
                 else:
                     return {'status': False, 'reason': 'not_known', 'product_id': product_id}
-            except:
+            except Exception as err:
+                print(err)
+                print('retry now!')
                 pass

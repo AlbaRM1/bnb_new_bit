@@ -31,6 +31,9 @@ class DataBooking(StatesGroup):
     ready_data = State()
     hotel_id = State()
     
+    pulse = State()
+    pulse_token = State()
+    
     count_all = State()
     count = State()
 
@@ -56,6 +59,28 @@ async def get_hotel_id(callback_query: types.CallbackQuery, state: FSMContext):
     await message.answer('Скинь мне прокси формата: login:password@ip:port (socks5 с авторизацией) или http (ip:port)', reply_markup=kb)
     await state.set_state(DataBooking.proxy)
     await state.update_data(proxy_type='socks')
+
+
+
+@router.callback_query(F.data == 'start_send_book_pulse')
+async def get_hotel_id(callback_query: types.CallbackQuery, state: FSMContext):
+    await callback_query.answer('OK')
+    message = callback_query.message
+    
+    await message.answer('Скинь мне refreshToken с запроса pulse')
+    await state.set_state(DataBooking.pulse_token)
+    await state.update_data(proxy_type='socks')
+
+
+
+@router.message(DataBooking.pulse_token, F.text)
+async def get_pulse_token(message: types.Message, state: FSMContext):
+    pulse_token = message.text
+    
+    await message.answer('Теперь отправь мне прокси')
+    await state.update_data(pulse_token=pulse_token)
+    await state.update_data(pulse=True)
+    await state.set_state(DataBooking.proxy)
 
 
 @router.callback_query(F.data == 'start_send_book_pia')
@@ -179,7 +204,8 @@ async def get_domain(message: types.Message, state: FSMContext):
                     'link': link,
                     'name': reserv['name'],
                     'hotel_name': reserv['hotel_name'],
-                    'hotel_id': reserv['hotel_id']
+                    'hotel_id': reserv['hotel_id'],
+                    'thread_id': reserv['thread_id']
                 })
             await message.answer(f'Ссылки созданы!')
             await message.answer(f'Для продолжения введи любое сообщение')
@@ -202,6 +228,7 @@ async def send_message(message: types.Message, state: FSMContext):
     hotel_name = data['hotel_name']
     message_text = data['message_text']
     
+    
     sentet_messages = 0
     count_messages = len(ready_data)
     
@@ -217,8 +244,10 @@ async def send_message(message: types.Message, state: FSMContext):
         text = replcate_in_text(message_text, i['name'], i['hotel_name'], i['link'])
         id_reserv = i['id']
         hotel_id = i['hotel_id']
+        thread_id = i['thread_id']
         
-        result = await account_model.send_messages(text, id_reserv, hotel_id)
+        result = await account_model.send_messages(text, id_reserv, hotel_id, thread_id=thread_id)
+
         if result['status']:
             sentet_messages += 1
             await add_count_success_send_messages_book(message.from_user.id)
@@ -229,6 +258,11 @@ async def send_message(message: types.Message, state: FSMContext):
             return 0
         elif not result['status'] and result['reason'] == 'edit_proxy':
             await message.answer(f'Сообщение не отправилось, поменяй прокси (ошибка 403)')
+            scheduler.shutdown()
+            await state.clear()
+            return 0
+        else:
+            await message.answer(f'Сообщение не отправилось, неизвесная ошибка)')
             scheduler.shutdown()
             await state.clear()
             return 0
