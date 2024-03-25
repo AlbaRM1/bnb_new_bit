@@ -7,7 +7,7 @@ from app import bot, chat_id, scheduler
 from utils import check_proxy, create_links, replace_template
 from models.airbnb import AirbnbAccount
 
-from database.requests import get_user,\
+from database.requests import edit_text_req, get_user,\
                             check_user,\
                             add_request_user,\
                             get_domains_id,\
@@ -18,11 +18,12 @@ from database.requests import get_user,\
                             del_proxy,\
                             get_texts,\
                             add_text,\
-                            del_text, change_role
+                            del_text, change_role, get_text
                             
 from keyboards.request_kb import get_request_kb
 from keyboards.adduser_kb import get_adduser_kb
 
+from keyboards.users.text_manager import get_text_manager_kb
 from keyboards.users.home import get_home_kb, view_domains_id, view_proxies, view_texts
 
 router = Router()
@@ -44,6 +45,12 @@ class Data(StatesGroup):
     domain_id_add = State()
     proxy_add = State()
     text_message_add = State()
+    name_template_text = State()
+    get_tamplate_name = State()
+    text = State()
+    
+    edit_text = State()
+    edit_id_text = State()
     
     count_all = State()
     count = State()
@@ -51,6 +58,7 @@ class Data(StatesGroup):
 
 @router.message(Command("start"))
 async def start(message: types.Message, state: FSMContext):
+    # await add_request_user(tg_id=message.from_user.id, tg_tag=message.from_user.username)
     result_check = await check_user(int(message.from_user.id))
     status = result_check['status']
     print(message.from_user.username)
@@ -118,23 +126,66 @@ async def view_texts_home(callback_query: types.CallbackQuery):
     text = await get_texts(callback_query.from_user.id)
     text_kb = view_texts(text)
     
-    await callback_query.message.edit_text('Выбери текст (при нажатии удалится из сохранённых)', reply_markup=text_kb)
+    await callback_query.message.edit_text('Выбери имя шаблона (при нажатии для просмотра текста)', reply_markup=text_kb)
     
 @router.callback_query(F.data == 'add_text')
 async def add_text_tg(callback_query: types.CallbackQuery, state: FSMContext):    
-    await callback_query.message.edit_text('Напиши текст для сохранения')
+    await callback_query.message.edit_text('Напиши текст шаблона для сохранения')
+    await state.set_state(Data.get_tamplate_name)
+    
+@router.message(Data.get_tamplate_name)
+async def add_name_text_tg(message: types.Message, state: FSMContext):
+    text = message.text
+    await state.update_data(text=text)
+    
+    await message.answer('Напиши имя для шаблона')
     await state.set_state(Data.text_message_add)
 
+
 @router.callback_query(F.data.startswith('actiontext___'))
-async def delete_text_tg(callback_query: types.CallbackQuery, state: FSMContext):
-    _, text = callback_query.data.split('___')
-    await del_text(text)
+async def action_text(callback_query: types.CallbackQuery, state: FSMContext):
+    _, text_id = callback_query.data.split('___')
+    kb = get_text_manager_kb(text_id)    
+    text = await get_text(text_id)
     
-    await callback_query.message.edit_text(f'Текст удалён')
+    await callback_query.message.edit_text(f'Твой текст: {text}', reply_markup=kb)
+
+
+@router.callback_query(F.data.startswith('edit_text___'))
+async def edit_text(callback_query: types.CallbackQuery, state: FSMContext):
+    _, text_id = callback_query.data.split('___')
+    await state.update_data(edit_id_text=text_id)
+    
+    await callback_query.message.edit_text('Введи новый текст для шаблона')
+    await state.set_state(Data.edit_text)
+    
+    
+@router.message(Data.edit_text, F.text)
+async def edit_text_tg(message: types.Message, state: FSMContext):
+    data = await state.get_data()
+    text_id = data['edit_id_text']
+    text = message.text
+    
+    await edit_text_req(text_id, text)
+    await message.answer('Текст изменён')
+    await state.clear()
+    
+
+@router.callback_query(F.data.startswith('delete_text___'))
+async def delete_text(callback_query: types.CallbackQuery, state: FSMContext):
+    _, text_id = callback_query.data.split('___')
+    await del_text(text_id=text_id)
+    
+    await callback_query.message.edit_text('Текст удалён')
+    
 
 @router.message(Data.text_message_add, F.text)
 async def get_text_tg(message: types.Message, state: FSMContext):
-    await add_text(message.from_user.id, message.text)
+    data = await state.get_data()
+    text = data['text']
+    name_template = message.text
+    
+    await add_text(message.from_user.id, name_template, text)
     user = await get_user(message.from_user.id)
     kb = get_home_kb(user)
     

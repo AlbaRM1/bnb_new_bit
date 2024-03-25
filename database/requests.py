@@ -146,13 +146,33 @@ async def get_texts(tg_id: int):
         result = await session.scalar(select(User).options(selectinload(User.texts)).filter_by(tg_id=tg_id))
         result = result.texts
         
+        return result
+
+
+async def get_text(text_id: int):
+    async with async_session() as session:
+        result = await session.scalar(select(Text).filter_by(id=text_id))
+        result = result.text
+        
         return result 
+    
 
 
-async def add_text(tg_id: int, text: str):
+async def get_text_for_name(text_name: str, tg_id: int):
     async with async_session() as session:
         result = await session.scalar(select(User).options(selectinload(User.texts)).filter_by(tg_id=tg_id))
-        result.texts.append(Text(text=text))
+        result = result.texts
+        
+        for i in result:
+            if i.name == text_name:
+                return i.text
+        return False
+
+
+async def add_text(tg_id: int, name: str, text: str):
+    async with async_session() as session:
+        result = await session.scalar(select(User).options(selectinload(User.texts)).filter_by(tg_id=tg_id))
+        result.texts.append(Text(name=name, text=text))
         
         session.add(result)
         await session.commit()
@@ -164,6 +184,15 @@ async def del_text(text_id: int):
         result = await session.scalar(select(Text).filter_by(id=text_id))
         
         await session.delete(result)
+        await session.commit()
+        return True
+
+
+async def edit_text_req(text_id: int, text: str):
+    async with async_session() as session:
+        result = await session.scalar(select(Text).filter_by(id=text_id))
+        result.text = text
+        
         await session.commit()
         return True
 

@@ -51,6 +51,7 @@ class Text(Base):
     __tablename__ = "texts"
 
     id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(15))
     text: Mapped[str]
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     

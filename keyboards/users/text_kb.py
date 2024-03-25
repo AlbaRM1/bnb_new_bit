@@ -5,7 +5,7 @@ def get_texts_kb(texts):
     
     if texts:
         for text in texts:
-            kb.append([types.KeyboardButton(text=str(text.text))])
+            kb.append([types.KeyboardButton(text=str(text.name))])
 
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
     return keyboard

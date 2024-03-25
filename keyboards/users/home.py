@@ -9,6 +9,7 @@ def get_home_kb(user):
             # [types.InlineKeyboardButton(text="Разослать сообщения BOOKING (pulse. Прокси не нужны)", callback_data="start_send_book_pulse")],
             [types.InlineKeyboardButton(text="Просмотреть сохранённые domain id", callback_data="view_domainids")],
             [types.InlineKeyboardButton(text="Просмотреть сохранённые прокси", callback_data="view_proxies")],
+            [types.InlineKeyboardButton(text="Просмотреть сохранённые шаблоны текстов", callback_data="view_texts")],
     ]
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard
@@ -26,13 +27,13 @@ def view_domains_id(domains):
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard
 
-def view_texts(texts):
+def view_texts(names):
     buttons = [
     ]
     
-    if texts:
-        for text in texts:
-            buttons.append([types.InlineKeyboardButton(text=str(text.text), callback_data=f'actiontext___{text.id}')])
+    if names:
+        for name in names:
+            buttons.append([types.InlineKeyboardButton(text=str(name.name), callback_data=f'actiontext___{name.id}')])
             
     buttons.append([types.InlineKeyboardButton(text='Добавить текст', callback_data='add_text')])
     
