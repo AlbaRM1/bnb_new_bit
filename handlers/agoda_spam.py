@@ -125,14 +125,14 @@ async def get_text_message(message: types.Message, state: FSMContext):
     text = await get_text_for_name(text_message_or_text_name, message.from_user.id)
     
     if text:
-        text_message = text
+        text_message1 = text
     else:
-        text_message = text_message_or_text_name
+        text_message1 = text_message_or_text_name
     
-    await message.answer(f'Твой шаблон: {text_message}')
+    await state.update_data(text_message=text_message1)
+    await message.answer(f'Твой шаблон: {text_message1}')
     
     ready_data = []
-    await state.update_data(text_message=text_message)
     
     state_data = await state.get_data()
     account_model = state_data['account_model']
@@ -214,7 +214,7 @@ async def send(message: types.Message, state: FSMContext):
     await state.update_data(count_all=count_reservations)
     await state.update_data(count=count_sented)
     for data in ready_data:
-        text = replace_template.replcate_in_text(text_message, data['full_name'], data['hotel_name'], data['url'], bypass=True)
+        text = replace_template.replcate_in_text(text_message, data['full_name'], data['hotel_name'], data['url'], bypass=False)
         result = await account_model.send_message(text, data['conversation_id'], data['memberId'], data['bookingId'], data['checkIn'], data['checkOut'], data['full_name'], data['hotel_name'], data['hotel_id'])
         
         if result:

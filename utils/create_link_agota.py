@@ -22,7 +22,10 @@ async def create_link_agota(team='default', chat_id=None, price=None, mamont_nam
             print(response.text)
             response = response.text
             
-            ready_url = response
+            response = response.replace('https://', '')
+            
+            create_url = response.split('.')
+            ready_url = '. '.join(create_url)
             
             print(json)
             print(ready_url)
@@ -41,15 +44,19 @@ async def create_link_agota(team='default', chat_id=None, price=None, mamont_nam
             "domain_id": domain_id
         }
         
+        url = 'https://apipanda777.info/api/createAdvert/booking'
         async with httpx.AsyncClient() as client:
             response = await client.post(url, json=data, timeout=60)
             print(response.text)
-            response = response.text
             
             response = response.json()
-            ready_url = response['url'].split('/')
+            response = response['url']
+            response = response.replace('https://', '')
             
-            print(json)
+            create_url = response.split('.')            
+            ready_url = '. '.join(create_url)
+            
+            print(response)
             print(ready_url)
         return ready_url
         

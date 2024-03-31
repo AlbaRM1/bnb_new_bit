@@ -142,6 +142,7 @@ class AirbnbAccount:
 
             reservations_raw = response['reservations']
 
+            rate = False
             for i in reservations_raw:
                 try:
                     # if i['host_calendar_reservation_status'] == 'STATUS_FUTURE':
@@ -149,7 +150,8 @@ class AirbnbAccount:
                         total_raw = i['earnings'].replace('\xa0', '')
                         print(total_raw)
                         
-                        total = await convert_to_eur(total_raw, currency)
+                        total = await convert_to_eur(total_raw, currency, rate)
+                        total, rate = total
                         print(total)
                         
                         thread_token = i['bessie_thread_id']
