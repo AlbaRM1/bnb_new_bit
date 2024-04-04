@@ -1,1 +1,5 @@
-UTF-8 DATA
+{"authorUserId":72121454,"reservationId":"144858118","propertyId":74744599}
+
+authorUserId = home
+reservationId = ['reservationItemId']
+propertyId = htid

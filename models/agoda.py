@@ -305,7 +305,7 @@ class AgodaAccount:
         }
 
         try:
-            response = await self.session.post('https://ycs.agoda.com/mldc/v1/chat/sendMessage', json=json_data)
+            response = await self.session.post('https://ycs.agoda.com/mldc/v1/chat/sendMessage', json=json_data, timeout=15)
             print(response.text)
             
             if response.status_code == 200:
