@@ -16,6 +16,10 @@ from utils.value_to_eur import convert_to_eur
 from utils.netscape_to_json import base64CookieToJsonCookie
 
 
+def chunkify(lst,n):
+    return [lst[i::n] for i in range(n)]
+
+
 class ExpediaAccount:
     def __init__(self, cookie_file, proxy):
         try:
@@ -60,43 +64,64 @@ class ExpediaAccount:
 
     async def check_cookies(self):
         try:
-            response = await self.session.get("https://apps.expediapartnercentral.com/")
-            self.htid = str(response.url).split('?htid=')[1]
-            self.userId = str(response.text).split("userId: '")[1].split("'")[0]
-            self.session.headers['htid'] = self.htid
+            response_main = await self.session.get("https://apps.expediapartnercentral.com/")
+            self.htid = []
             
-            r = await self.session.get(f'https://apps.expediapartnercentral.com/lodging/conversations/messageCenter.html?htid={self.htid}')
+            if 'MultiProperty.html' in str(response_main.url):
+                response = await self.session.get('https://apps.expediapartnercentral.com/lodging/multiproperty/api/v1/user-properties?sortBy=propertyName')
+                response_json = response.json()['properties']
+                
+                self.htid = [i['propertyId'] for i in response_json]
+                print(self.htid)
+            else:
+                self.htid = [str(response_main.url).split('?htid=')[1]]            
+            self.userId = str(response_main.text).split("userId: '")[1].split("'")[0]
+            
+            r = await self.session.get(f'https://apps.expediapartnercentral.com/lodging/conversations/messageCenter.html?htid={self.htid[0]}')
             csrf_token = str(r.text).split('csrfToken:"')[1].split('"')[0]
             self.session.headers["csrf-token"] = csrf_token
             
             return True
-        except:
+        except Exception as err:
+            print(err)
             return False
     
     
     async def create_chat(self, data):
+        retry = 0
+        
         params = {
-            'htid': self.htid,
+            'htid': data['htid'],
         }
         json_data = {
             'authorUserId': self.userId,
             'reservationId': data['reservationItemId'],
-            'propertyId': int(self.htid),
+            'propertyId': int(data['htid']),
         }
-        try:
-            response = await self.session.post(
-                'https://apps.expediapartnercentral.com/lodging/bookings/conversation/spcs-create',
-                params=params,
-                json=json_data,
-            )
+        
+        while True:
+            if retry == 10:
+                return False
             
-            if response.status_code == 200:
-                response = response.json()
-                data['conversation_id'] = response['conversationId']
-                data['cpce_id'] = response['cpcePartnerId']
-            return data
-        except:
-            return False
+            try:
+                response = await self.session.post(
+                    'https://apps.expediapartnercentral.com/lodging/bookings/conversation/spcs-create',
+                    params=params,
+                    json=json_data,
+                )
+                
+                if response.status_code == 200:
+                    response = response.json()
+                    data['conversation_id'] = response['conversationId']
+                    data['cpce_id'] = response['cpcePartnerId']
+                    
+                    if data['conversation_id']:
+                        return data
+            except:
+                return False
+
+            retry += 1
+            await asyncio.sleep(random.uniform(3, 6))
     
     async def get_reservations(self, message: types.Message):
         now_date = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -111,101 +136,24 @@ class ExpediaAccount:
         
         self.session.headers['client-name'] = 'pc-reservations-web'
 
-        json_data = {
-            'query': 'query getReservationsBySearchCriteria {reservationSearchV2(input: {propertyId: '+self.htid+', booked: true, bookingItemId: null, canceled: true, confirmationNumber: null, confirmed: true, startDate: "'+now_date+'", endDate: "'+next_date+'", dateType: \"checkIn\", evc: false, expediaCollect: true, timezoneOffset: \"+10:00\", firstName: null, hotelCollect: true, isSpecialRequest: false, isVIPBooking: false, lastName: null, reconciled: false, readyToReconcile: false, returnBookingItemIDsOnly: false, searchParam: null, unconfirmed: true searchForCancelWaiversOnly: false }) { reservationItems{ reservationItemId reservationInfo {reservationTpid propertyId startDate endDate createDateTime brandDisplayName newReservationItemId country reservationAttributes {businessModel bookingStatus fraudCancelled fraudReleased stayStatus eligibleForECNoShowAndCancel strongCustomerAuthentication invoiced} specialRequestDetails accessibilityRequestDetails product {productTypeId unitName bedTypeName propertyVipStatus} customerArrivalTime {arrival}readyToReconcile epsBooking } customer {id guestName phoneNumber email emailAlias country} loyaltyInfo {loyaltyStatus vipAmenities} confirmationInfo {productConfirmationCode} conversationsInfo {conversationsSupported id unreadMessageCount conversationStatus cpcePartnerId}totalAmounts {totalAmountForPartners {value currencyCode}totalCommissionAmount {value currencyCode}totalReservationAmount {value currencyCode}propertyBookingTotal {value currencyCode}totalReservationAmountInPartnerCurrency {value currencyCode}}reservationActions {requestToCancel {reason actionSupported actionUnsupportedBehavior {hide disable}}changeStayDates {reason actionSupported}requestRelocation {reason actionSupported}actionAttributes {highFence}reconciliationActions {markAsNoShow {reason actionSupported actionUnsupportedBehavior {hide disable openVa}virtualAgentParameters {intentName taxonomyId}}undoMarkNoShow {reason actionSupported actionUnsupportedBehavior {hide disable}}changeCancellationFee {reason actionSupported actionUnsupportedBehavior {hide disable}}resetCancellationFee {reason actionSupported actionUnsupportedBehavior {hide disable}}markAsCancellation {reason actionSupported actionUnsupportedBehavior {hide disable}}undoMarkAsCancellation {reason actionSupported actionUnsupportedBehavior {hide disable}}changeReservationAmountsOrDates {reason actionSupported actionUnsupportedBehavior {hide disable}}resetReservationAmountsOrDates {reason actionSupported actionUnsupportedBehavior {hide disable}}}}reconciliationInfo {reconciliationDateTime reconciliationType}paymentInfo {evcCardDetailsExist expediaVirtualCardResourceId creditCardDetails { viewable viewCountLimit viewCountLeft viewCount hideCvvFromDisplay valid prevalidateCardOptIn cardValidationViewable inViewingWindow validationInfo {validationStatus validationType validationDate validationBy hasGuestProvidedNewCC newCreditCardReceivedDate is24HoursFromLastValidation } }}billingInfo {invoiceNumber }cancellationInfo {cancelDateTime cancellationPolicy {priceCurrencyCode costCurrencyCode policyType cancellationPenalties {penaltyCost penaltyPrice penaltyPerStayFee penaltyTime penaltyInterval penaltyStartHour penaltyEndHour }nonrefundableDatesList}}compensationDetails {reservationWaiverType reservationFeeAmounts {propertyWaivedFeeLineItem {costCurrency costAmount }}} searchWaiverRequest {serviceRequestId type typeDetails state orderNumber partnerId createdDate srConversationId lastUpdatedDate notes {text author {firstName lastName }}}} numOfCancelWaivers}}',
-            'variables': {},
-        }
+        for htid in self.htid:
+            htid = str(htid)
+            self.session.headers['htid'] = htid
+            json_data = {
+                'query': 'query getReservationsBySearchCriteria {reservationSearchV2(input: {propertyId: '+htid+', booked: true, bookingItemId: null, canceled: false, confirmationNumber: null, confirmed: true, startDate: "'+now_date+'", endDate: "'+next_date+'", dateType: \"checkIn\", evc: false, expediaCollect: true, timezoneOffset: \"+10:00\", firstName: null, hotelCollect: true, isSpecialRequest: false, isVIPBooking: false, lastName: null, reconciled: false, readyToReconcile: false, returnBookingItemIDsOnly: false, searchParam: null, unconfirmed: false searchForCancelWaiversOnly: false }) { reservationItems{ reservationItemId reservationInfo {reservationTpid propertyId startDate endDate createDateTime brandDisplayName newReservationItemId country reservationAttributes {businessModel bookingStatus fraudCancelled fraudReleased stayStatus eligibleForECNoShowAndCancel strongCustomerAuthentication invoiced} specialRequestDetails accessibilityRequestDetails product {productTypeId unitName bedTypeName propertyVipStatus} customerArrivalTime {arrival}readyToReconcile epsBooking } customer {id guestName phoneNumber email emailAlias country} loyaltyInfo {loyaltyStatus vipAmenities} confirmationInfo {productConfirmationCode} conversationsInfo {conversationsSupported id unreadMessageCount conversationStatus cpcePartnerId}totalAmounts {totalAmountForPartners {value currencyCode}totalCommissionAmount {value currencyCode}totalReservationAmount {value currencyCode}propertyBookingTotal {value currencyCode}totalReservationAmountInPartnerCurrency {value currencyCode}}reservationActions {requestToCancel {reason actionSupported actionUnsupportedBehavior {hide disable}}changeStayDates {reason actionSupported}requestRelocation {reason actionSupported}actionAttributes {highFence}reconciliationActions {markAsNoShow {reason actionSupported actionUnsupportedBehavior {hide disable openVa}virtualAgentParameters {intentName taxonomyId}}undoMarkNoShow {reason actionSupported actionUnsupportedBehavior {hide disable}}changeCancellationFee {reason actionSupported actionUnsupportedBehavior {hide disable}}resetCancellationFee {reason actionSupported actionUnsupportedBehavior {hide disable}}markAsCancellation {reason actionSupported actionUnsupportedBehavior {hide disable}}undoMarkAsCancellation {reason actionSupported actionUnsupportedBehavior {hide disable}}changeReservationAmountsOrDates {reason actionSupported actionUnsupportedBehavior {hide disable}}resetReservationAmountsOrDates {reason actionSupported actionUnsupportedBehavior {hide disable}}}}reconciliationInfo {reconciliationDateTime reconciliationType}paymentInfo {evcCardDetailsExist expediaVirtualCardResourceId creditCardDetails { viewable viewCountLimit viewCountLeft viewCount hideCvvFromDisplay valid prevalidateCardOptIn cardValidationViewable inViewingWindow validationInfo {validationStatus validationType validationDate validationBy hasGuestProvidedNewCC newCreditCardReceivedDate is24HoursFromLastValidation } }}billingInfo {invoiceNumber }cancellationInfo {cancelDateTime cancellationPolicy {priceCurrencyCode costCurrencyCode policyType cancellationPenalties {penaltyCost penaltyPrice penaltyPerStayFee penaltyTime penaltyInterval penaltyStartHour penaltyEndHour }nonrefundableDatesList}}compensationDetails {reservationWaiverType reservationFeeAmounts {propertyWaivedFeeLineItem {costCurrency costAmount }}} searchWaiverRequest {serviceRequestId type typeDetails state orderNumber partnerId createdDate srConversationId lastUpdatedDate notes {text author {firstName lastName }}}} numOfCancelWaivers}}',
+                'variables': {},
+            }
 
-        response = await self.session.post(
-            'https://api.expediapartnercentral.com/supply/experience/gateway/graphql',
-            json=json_data,
-        )
-        
-        reservations_raw = response.json()['data']['reservationSearchV2']['reservationItems']
-        print(f'COUNT_RESERVATIONS -> {len(reservations_raw)}')
-        
-        if len(reservations_raw) < 500:
-            for reservation in reservations_raw:
-                hotel_prop_id = reservation['reservationInfo']['propertyId']
-                hotel_info = hotels_info.get(hotel_prop_id, None)
-                
-                if hotel_info:
-                    address = hotel_info['address']
-                    img = hotel_info['img'],
-                    hotel_name = hotel_info['hotel_name']
-                else:
-                    hotel_info = await self.get_hotels_info(hotel_prop_id)
-                    hotels_info[hotel_prop_id] = hotel_info
-                    
-                    address = hotel_info['address']
-                    img = hotel_info['img']
-                    hotel_name = hotel_info['hotel_name']
-                
-                full_name = reservation['customer']['guestName']
-                start_date = reservation['reservationInfo']['startDate']
-                end_date = reservation['reservationInfo']['endDate']
-                
-                price_data = reservation['totalAmounts']['totalReservationAmountInPartnerCurrency']
-                currency = price_data['currencyCode']
-                room_name = reservation['reservationInfo']['product']['unitName']
-                
-                total = await convert_to_eur(str(price_data['value']), currency, rate)
-                total, rate = total
-                
-                if reservation['conversationsInfo']['conversationsSupported']:
-                    if reservation['reservationInfo']['reservationAttributes']['stayStatus'] != 'cancelled':
-                        conversation_id = reservation['conversationsInfo']['id']
-                        cpce_id = reservation['conversationsInfo']['cpcePartnerId']
-                        
-                        if not conversation_id:
-                            not_create_chat.append({
-                                    'address': address,
-                                    'image_url': img,
-                                    'full_name': full_name,
-                                    'start_date': start_date,
-                                    'end_date': end_date,
-                                    'room_name': room_name,
-                                    'price': total,
-                                    'conversation_id': conversation_id,
-                                    'cpce_id': cpce_id,
-                                    'hotel_name': hotel_name,
-                                    'reservationItemId': reservation['reservationItemId']
-                                })
-                        else:
-                            ready_data.append({
-                            'address': address,
-                            'image_url': img,
-                            'full_name': full_name,
-                            'start_date': start_date,
-                            'end_date': end_date,
-                            'room_name': room_name,
-                            'price': total,
-                            'conversation_id': conversation_id,
-                            'cpce_id': cpce_id,
-                            'hotel_name': hotel_name
-                        })
-        else:            
-            months = 0
-            months_next = 1
-            count_months = 12 - int(datetime.datetime.now().strftime('%m'))
+            response = await self.session.post(
+                'https://api.expediapartnercentral.com/supply/experience/gateway/graphql',
+                json=json_data,
+            )
             
-            for _ in range(count_months):
-                now_date = datetime.datetime.now() + relativedelta(months=months)
-                now_date = now_date.strftime('%Y-%m-%d')
-                next_date = datetime.datetime.now() + relativedelta(months=months_next)
-                next_date = next_date.strftime('%Y-%m-%d')
-                
-                json_data = {
-                            'query': 'query getReservationsBySearchCriteria {reservationSearchV2(input: {propertyId: '+self.htid+', booked: true, bookingItemId: null, canceled: true, confirmationNumber: null, confirmed: true, startDate: "'+now_date+'", endDate: "'+next_date+'", dateType: \"checkIn\", evc: false, expediaCollect: true, timezoneOffset: \"+10:00\", firstName: null, hotelCollect: true, isSpecialRequest: false, isVIPBooking: false, lastName: null, reconciled: false, readyToReconcile: false, returnBookingItemIDsOnly: false, searchParam: null, unconfirmed: true searchForCancelWaiversOnly: false }) { reservationItems{ reservationItemId reservationInfo {reservationTpid propertyId startDate endDate createDateTime brandDisplayName newReservationItemId country reservationAttributes {businessModel bookingStatus fraudCancelled fraudReleased stayStatus eligibleForECNoShowAndCancel strongCustomerAuthentication invoiced} specialRequestDetails accessibilityRequestDetails product {productTypeId unitName bedTypeName propertyVipStatus} customerArrivalTime {arrival}readyToReconcile epsBooking } customer {id guestName phoneNumber email emailAlias country} loyaltyInfo {loyaltyStatus vipAmenities} confirmationInfo {productConfirmationCode} conversationsInfo {conversationsSupported id unreadMessageCount conversationStatus cpcePartnerId}totalAmounts {totalAmountForPartners {value currencyCode}totalCommissionAmount {value currencyCode}totalReservationAmount {value currencyCode}propertyBookingTotal {value currencyCode}totalReservationAmountInPartnerCurrency {value currencyCode}}reservationActions {requestToCancel {reason actionSupported actionUnsupportedBehavior {hide disable}}changeStayDates {reason actionSupported}requestRelocation {reason actionSupported}actionAttributes {highFence}reconciliationActions {markAsNoShow {reason actionSupported actionUnsupportedBehavior {hide disable openVa}virtualAgentParameters {intentName taxonomyId}}undoMarkNoShow {reason actionSupported actionUnsupportedBehavior {hide disable}}changeCancellationFee {reason actionSupported actionUnsupportedBehavior {hide disable}}resetCancellationFee {reason actionSupported actionUnsupportedBehavior {hide disable}}markAsCancellation {reason actionSupported actionUnsupportedBehavior {hide disable}}undoMarkAsCancellation {reason actionSupported actionUnsupportedBehavior {hide disable}}changeReservationAmountsOrDates {reason actionSupported actionUnsupportedBehavior {hide disable}}resetReservationAmountsOrDates {reason actionSupported actionUnsupportedBehavior {hide disable}}}}reconciliationInfo {reconciliationDateTime reconciliationType}paymentInfo {evcCardDetailsExist expediaVirtualCardResourceId creditCardDetails { viewable viewCountLimit viewCountLeft viewCount hideCvvFromDisplay valid prevalidateCardOptIn cardValidationViewable inViewingWindow validationInfo {validationStatus validationType validationDate validationBy hasGuestProvidedNewCC newCreditCardReceivedDate is24HoursFromLastValidation } }}billingInfo {invoiceNumber }cancellationInfo {cancelDateTime cancellationPolicy {priceCurrencyCode costCurrencyCode policyType cancellationPenalties {penaltyCost penaltyPrice penaltyPerStayFee penaltyTime penaltyInterval penaltyStartHour penaltyEndHour }nonrefundableDatesList}}compensationDetails {reservationWaiverType reservationFeeAmounts {propertyWaivedFeeLineItem {costCurrency costAmount }}} searchWaiverRequest {serviceRequestId type typeDetails state orderNumber partnerId createdDate srConversationId lastUpdatedDate notes {text author {firstName lastName }}}} numOfCancelWaivers}}',
-                            'variables': {},
-                        }
-
-                response = await self.session.post(
-                    'https://api.expediapartnercentral.com/supply/experience/gateway/graphql',
-                    json=json_data,
-                )
-                reservations_raw = response.json()['data']['reservationSearchV2']['reservationItems']
-                print(f'COUNT_RESERVATIONS -> {len(reservations_raw)}')
+            print(response.json())
+            reservations_raw = response.json()['data']['reservationSearchV2']['reservationItems']
+            print(f'COUNT_RESERVATIONS -> {len(reservations_raw)}')
+            
+            if len(reservations_raw) < 500:
                 for reservation in reservations_raw:
                     hotel_prop_id = reservation['reservationInfo']['propertyId']
                     hotel_info = hotels_info.get(hotel_prop_id, None)
@@ -240,50 +188,146 @@ class ExpediaAccount:
                             
                             if not conversation_id:
                                 not_create_chat.append({
-                                    'address': address,
-                                    'image_url': img,
-                                    'full_name': full_name,
-                                    'start_date': start_date,
-                                    'end_date': end_date,
-                                    'room_name': room_name,
-                                    'price': total,
-                                    'conversation_id': conversation_id,
-                                    'cpce_id': cpce_id,
-                                    'hotel_name': hotel_name,
-                                    'reservationItemId': reservation['reservationItemId']
-                                })
+                                        'address': address,
+                                        'image_url': img,
+                                        'full_name': full_name,
+                                        'start_date': start_date,
+                                        'end_date': end_date,
+                                        'room_name': room_name,
+                                        'price': total,
+                                        'conversation_id': conversation_id,
+                                        'cpce_id': cpce_id,
+                                        'hotel_name': hotel_name,
+                                        'htid': htid,
+                                        'reservationItemId': reservation['reservationItemId']
+                                    })
                             else:
                                 ready_data.append({
-                                    'address': address,
-                                    'image_url': img,
-                                    'full_name': full_name,
-                                    'start_date': start_date,
-                                    'end_date': end_date,
-                                    'room_name': room_name,
-                                    'price': total,
-                                    'conversation_id': conversation_id,
-                                    'cpce_id': cpce_id,
-                                    'hotel_name': hotel_name,
-                                    'reservationItemId': reservation['reservationItemId']
-                                })
+                                'address': address,
+                                'image_url': img,
+                                'full_name': full_name,
+                                'start_date': start_date,
+                                'end_date': end_date,
+                                'room_name': room_name,
+                                'price': total,
+                                'conversation_id': conversation_id,
+                                'cpce_id': cpce_id,
+                                'htid': htid,
+                                'hotel_name': hotel_name
+                            })
+            else:            
+                months = 0
+                months_next = 1
+                count_months = 12 - int(datetime.datetime.now().strftime('%m'))
+                
+                for _ in range(count_months):
+                    now_date = datetime.datetime.now() + relativedelta(months=months)
+                    now_date = now_date.strftime('%Y-%m-%d')
+                    next_date = datetime.datetime.now() + relativedelta(months=months_next)
+                    next_date = next_date.strftime('%Y-%m-%d')
+                    
+                    json_data = {
+                                'query': 'query getReservationsBySearchCriteria {reservationSearchV2(input: {propertyId: '+htid+', booked: true, bookingItemId: null, canceled: false, confirmationNumber: null, confirmed: true, startDate: "'+now_date+'", endDate: "'+next_date+'", dateType: \"checkIn\", evc: false, expediaCollect: true, timezoneOffset: \"+10:00\", firstName: null, hotelCollect: true, isSpecialRequest: false, isVIPBooking: false, lastName: null, reconciled: false, readyToReconcile: false, returnBookingItemIDsOnly: false, searchParam: null, unconfirmed: false searchForCancelWaiversOnly: false }) { reservationItems{ reservationItemId reservationInfo {reservationTpid propertyId startDate endDate createDateTime brandDisplayName newReservationItemId country reservationAttributes {businessModel bookingStatus fraudCancelled fraudReleased stayStatus eligibleForECNoShowAndCancel strongCustomerAuthentication invoiced} specialRequestDetails accessibilityRequestDetails product {productTypeId unitName bedTypeName propertyVipStatus} customerArrivalTime {arrival}readyToReconcile epsBooking } customer {id guestName phoneNumber email emailAlias country} loyaltyInfo {loyaltyStatus vipAmenities} confirmationInfo {productConfirmationCode} conversationsInfo {conversationsSupported id unreadMessageCount conversationStatus cpcePartnerId}totalAmounts {totalAmountForPartners {value currencyCode}totalCommissionAmount {value currencyCode}totalReservationAmount {value currencyCode}propertyBookingTotal {value currencyCode}totalReservationAmountInPartnerCurrency {value currencyCode}}reservationActions {requestToCancel {reason actionSupported actionUnsupportedBehavior {hide disable}}changeStayDates {reason actionSupported}requestRelocation {reason actionSupported}actionAttributes {highFence}reconciliationActions {markAsNoShow {reason actionSupported actionUnsupportedBehavior {hide disable openVa}virtualAgentParameters {intentName taxonomyId}}undoMarkNoShow {reason actionSupported actionUnsupportedBehavior {hide disable}}changeCancellationFee {reason actionSupported actionUnsupportedBehavior {hide disable}}resetCancellationFee {reason actionSupported actionUnsupportedBehavior {hide disable}}markAsCancellation {reason actionSupported actionUnsupportedBehavior {hide disable}}undoMarkAsCancellation {reason actionSupported actionUnsupportedBehavior {hide disable}}changeReservationAmountsOrDates {reason actionSupported actionUnsupportedBehavior {hide disable}}resetReservationAmountsOrDates {reason actionSupported actionUnsupportedBehavior {hide disable}}}}reconciliationInfo {reconciliationDateTime reconciliationType}paymentInfo {evcCardDetailsExist expediaVirtualCardResourceId creditCardDetails { viewable viewCountLimit viewCountLeft viewCount hideCvvFromDisplay valid prevalidateCardOptIn cardValidationViewable inViewingWindow validationInfo {validationStatus validationType validationDate validationBy hasGuestProvidedNewCC newCreditCardReceivedDate is24HoursFromLastValidation } }}billingInfo {invoiceNumber }cancellationInfo {cancelDateTime cancellationPolicy {priceCurrencyCode costCurrencyCode policyType cancellationPenalties {penaltyCost penaltyPrice penaltyPerStayFee penaltyTime penaltyInterval penaltyStartHour penaltyEndHour }nonrefundableDatesList}}compensationDetails {reservationWaiverType reservationFeeAmounts {propertyWaivedFeeLineItem {costCurrency costAmount }}} searchWaiverRequest {serviceRequestId type typeDetails state orderNumber partnerId createdDate srConversationId lastUpdatedDate notes {text author {firstName lastName }}}} numOfCancelWaivers}}',
+                                'variables': {},
+                            }
 
-                months += 1
-                months_next += 1
-        
-        print(f'READY DATA -> {len(ready_data)} NOT CREATE CHAT -> {len(not_create_chat)}')
-        
+                    response = await self.session.post(
+                        'https://api.expediapartnercentral.com/supply/experience/gateway/graphql',
+                        json=json_data,
+                    )
+                    
+                    print(response.json())
+                    
+                    reservations_raw = response.json()['data']['reservationSearchV2']['reservationItems']
+                    if not reservations_raw:
+                        reservations_raw = []
+                    
+                    print(f'COUNT_RESERVATIONS -> {len(reservations_raw)}')
+                    
+                    
+                    for reservation in reservations_raw:
+                        hotel_prop_id = reservation['reservationInfo']['propertyId']
+                        hotel_info = hotels_info.get(hotel_prop_id, None)
+                        
+                        if hotel_info:
+                            address = hotel_info['address']
+                            img = hotel_info['img'],
+                            hotel_name = hotel_info['hotel_name']
+                        else:
+                            hotel_info = await self.get_hotels_info(hotel_prop_id)
+                            hotels_info[hotel_prop_id] = hotel_info
+                            
+                            address = hotel_info['address']
+                            img = hotel_info['img']
+                            hotel_name = hotel_info['hotel_name']
+                        
+                        full_name = reservation['customer']['guestName']
+                        start_date = reservation['reservationInfo']['startDate']
+                        end_date = reservation['reservationInfo']['endDate']
+                        
+                        price_data = reservation['totalAmounts']['totalReservationAmountInPartnerCurrency']
+                        currency = price_data['currencyCode']
+                        room_name = reservation['reservationInfo']['product']['unitName']
+                        
+                        total = await convert_to_eur(str(price_data['value']), currency, rate)
+                        total, rate = total
+                        
+                        if reservation['conversationsInfo']['conversationsSupported']:
+                            if reservation['reservationInfo']['reservationAttributes']['stayStatus'] != 'cancelled':
+                                conversation_id = reservation['conversationsInfo']['id']
+                                cpce_id = reservation['conversationsInfo']['cpcePartnerId']
+                                
+                                if not conversation_id:
+                                    not_create_chat.append({
+                                        'address': address,
+                                        'image_url': img,
+                                        'full_name': full_name,
+                                        'start_date': start_date,
+                                        'end_date': end_date,
+                                        'room_name': room_name,
+                                        'price': total,
+                                        'conversation_id': conversation_id,
+                                        'cpce_id': cpce_id,
+                                        'hotel_name': hotel_name,
+                                        'htid': htid,
+                                        'reservationItemId': reservation['reservationItemId']
+                                    })
+                                else:
+                                    ready_data.append({
+                                        'address': address,
+                                        'image_url': img,
+                                        'full_name': full_name,
+                                        'start_date': start_date,
+                                        'end_date': end_date,
+                                        'room_name': room_name,
+                                        'price': total,
+                                        'conversation_id': conversation_id,
+                                        'cpce_id': cpce_id,
+                                        'hotel_name': hotel_name,
+                                        'htid': htid,
+                                        'reservationItemId': reservation['reservationItemId']
+                                    })
+
+                    months += 1
+                    months_next += 1
+            
+            print(f'READY DATA -> {len(ready_data)} NOT CREATE CHAT -> {len(not_create_chat)}')
+            
         if not_create_chat:
             await message.answer('Создаём чаты для броней')
+            
             futures = []
             
             for data in not_create_chat:
                 futures.append(asyncio.create_task(self.create_chat(data)))
 
-            for result in asyncio.as_completed(futures):
-                result = await result
-                print(result)
-                if result:
-                    ready_data.append(result)
+            futures = chunkify(futures, 10)
+            for future in futures:
+                for result in asyncio.as_completed(future):
+                    result = await result
+                    print(result)
+                    if result:
+                        ready_data.append(result)
 
             
         self.session.headers.pop('client-name')
@@ -302,7 +346,9 @@ class ExpediaAccount:
         return {'address': address, 'img': img, 'hotel_name': hotel_name}
     
     
-    async def send_message(self, message, conversation_id, cpce_id):        
+    async def send_message(self, message, conversation_id, cpce_id, htid):   
+        htid = str(htid)  
+        self.session.headers['htid'] = htid
         json_data = {
             'conversationId': conversation_id,
             'cpcePartnerId': cpce_id,
@@ -315,15 +361,18 @@ class ExpediaAccount:
             if retry == 10:
                 return False
             
-            response = await self.session.post(
-                'https://apps.expediapartnercentral.com/lodging/conversations/api/conversations/sendMessage',
-                json=json_data
-            )
-            
-            print(response.text)
-            if '"messageStatus":"DELIVERED"' in response.text:
-                return True
-            
+            try:
+                response = await self.session.post(
+                    'https://apps.expediapartnercentral.com/lodging/conversations/api/conversations/sendMessage',
+                    json=json_data,
+                    timeout=15
+                )
+                
+                print(response.text)
+                if '"messageStatus":"DELIVERED"' in response.text:
+                    return True
+            except:
+                pass
             
             retry += 1
             await asyncio.sleep(random.uniform(1, 3))

@@ -214,7 +214,7 @@ async def send(message: types.Message, state: FSMContext):
     await state.update_data(count_all=count_reservations)
     await state.update_data(count=count_sented)
     for data in ready_data:
-        text = replace_template.replcate_in_text(text_message, data['full_name'], data['hotel_name'], data['url'], bypass=False)
+        text = replace_template.replcate_in_text(text_message, data['full_name'], data['hotel_name'], data['url'], bypass=True)
         result = await account_model.send_message(text, data['conversation_id'], data['memberId'], data['bookingId'], data['checkIn'], data['checkOut'], data['full_name'], data['hotel_name'], data['hotel_id'])
         
         if result:

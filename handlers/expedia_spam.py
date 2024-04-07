@@ -169,6 +169,7 @@ async def get_text_message(message: types.Message, state: FSMContext):
                                    'conversation_id': reservation['conversation_id'], 
                                    'hotel_name': reservation['hotel_name'],
                                    'full_name': reservation['full_name'], 
+                                   'htid': reservation['htid'],
                                    'url': url, 
                                    })
             await message.answer('✅ Ссылки созданы! Напиши любое сообщение, чтобы продолжить ✅')
@@ -207,7 +208,7 @@ async def send(message: types.Message, state: FSMContext):
     
     for data in ready_data:
         text = replace_template.replcate_in_text(text_message, data['full_name'], data['hotel_name'], data['url'])
-        futures.append(asyncio.create_task(account_model.send_message(text, data['conversation_id'], data['cpce_id'])))
+        futures.append(asyncio.create_task(account_model.send_message(text, data['conversation_id'], data['cpce_id'], data['htid'])))
     
     for result in asyncio.as_completed(futures):
         result = await result

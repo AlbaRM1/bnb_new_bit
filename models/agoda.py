@@ -289,11 +289,11 @@ class AgodaAccount:
         checkOut = ' '.join(checkOut)
         
         json_data = {
-            'conversationId': str(0),
+            'conversationId': str(conversationId),
             'memberId': int(memberId),
             'message': message,
             'bookingId': int(bookingId),
-            'target': 'agoda:hermes',
+            'target': 'guest',
             'origin': 'YcsHermesIris',
             'checkIn': checkIn,
             'checkOut': checkOut,
@@ -301,9 +301,9 @@ class AgodaAccount:
             'customerName': guestName,
             'propertyId': str(hotel_id),
             'propertyName': hotelName,
-            "isVisibleTo":[ "guest", "host" ]
+            "isVisibleTo": None
         }
-
+        
         try:
             response = await self.session.post('https://ycs.agoda.com/mldc/v1/chat/sendMessage', json=json_data, timeout=15)
             print(response.text)
